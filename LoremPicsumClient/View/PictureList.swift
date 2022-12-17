@@ -26,16 +26,19 @@ struct PictureList<DataSource: PictureListDataSource>: View {
         return CGSize(width: viewSize.width, height: pictureSize.height * scalar)
     }
     
+    @ViewBuilder private func cell(for pictureID: Int, listSize: CGSize) -> some View {
+        let pictureSize = pictureSize(for: pictureID, in: listSize)
+        
+        let pictureURL = dataSource.pictureURL(for: pictureID, size: pictureSize)
+        LoremPicsumImage(url: pictureURL)
+            .frame(width: pictureSize.width, height: pictureSize.height)
+            .padding()
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             List(dataSource.pictures, id: \.self) { id in
-                let pictureSize = pictureSize(for: id, in: geometry.size)
-                VStack(alignment: .leading) {
-                    Text(String(id))
-                    let pictureURL = dataSource.pictureURL(for: id, size: pictureSize)
-                    LoremPicsumImage(url: pictureURL)
-                        .frame(width: pictureSize.width, height: pictureSize.height)
-                }
+                cell(for: id, listSize: geometry.size)
             }
         }
     }
