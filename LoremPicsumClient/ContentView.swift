@@ -10,13 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: "https://picsum.photos/50/50")) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 50, height: 50)
-        }
+            LoremPicsumImage(url: URL(string: "https://picsum.photos/id/237/200/300")!)        }
+        .frame(width: 200, height: 300)
         .padding()
     }
 }
