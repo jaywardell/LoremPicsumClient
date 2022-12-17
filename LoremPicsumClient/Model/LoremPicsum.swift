@@ -42,6 +42,14 @@ struct LoremPicsum {
             .url!
     }
     
+    static func infoForPicture(seed: String) -> URL {
+        base
+            .addingPathComponent("seed")
+            .addingPathComponent(seed)
+            .addingPathComponent("info")
+            .url!
+    }
+
     static func randomPicture(width: Int, height: Int? = nil) -> LoremPicsum {
         base
             .addingPathComponent(width)

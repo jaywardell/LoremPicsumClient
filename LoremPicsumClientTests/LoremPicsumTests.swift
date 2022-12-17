@@ -21,6 +21,15 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created, expected)
     }
     
+    func test_infoForPictureWith_seed_returns_expected_URL() {
+        let sut = LoremPicsum.self
+        let seed = "picsum"
+        let expected = URL(string: "https://picsum.photos/seed/picsum/info")
+
+        let created = sut.infoForPicture(seed: seed)
+        XCTAssertEqual(created, expected)
+    }
+
     func test_randomPicture_returns_expected_url_when_given_2_dimensions() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200/300")
