@@ -26,6 +26,18 @@ struct LoremPicsum {
     
     // see https://picsum.photos for documenation on the API for LoremPicsum
     
+    private init(url: URL, width: CGFloat, height: CGFloat, seed: String?, id: Int?, randomID: String?, isGrayscale: Bool, blurRadius: Int, fileType: UTType?) {
+        self.url = url
+        self.width = width
+        self.height = height
+        self.seed = seed
+        self.id = id
+        self.randomID = randomID
+        self.isGrayscale = isGrayscale
+        self.blurRadius = blurRadius
+        self.fileType = fileType
+    }
+    
     private static let host = "picsum.photos"
     private static var base: URLComponents {
         var out = URLComponents()
