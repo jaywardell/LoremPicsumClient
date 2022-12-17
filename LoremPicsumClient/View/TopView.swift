@@ -27,9 +27,10 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
                 Divider()
                 VStack {
                     PictureEditor(viewModel: ExamplePictureEditorViewModel())
+                        .padding()
                     Spacer()
                 }
-                    .frame(width: 200)
+                    .frame(width: 240)
             }
         }
         else {
