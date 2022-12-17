@@ -11,12 +11,14 @@ import Combine
 final class LoremPicsumList: ObservableObject {
     
     struct ListItem: Decodable {
-        let id: Int
+        let id: String
         let author: String?
         let width: Int
         let height: Int
-        let url: URL
-        let downloadURL: URL
+        let url: URL?
+        let downloadURL: URL?
+        
+        var pictureID: Int { Int(id)! }
         
 //        {
 //                "id": "0",
@@ -44,15 +46,22 @@ final class LoremPicsumList: ObservableObject {
         loadMoreContent()
     }
         
+    func indexForItem(withID id: Int) -> Int? {
+        items.firstIndex { $0.pictureID == id }
+    }
     
-    func loadMoreContentIfNeeded(currentItem item: ListItem?) {
-      guard let item = item else {
+    func item(withID id: Int) -> ListItem? {
+        items.first { $0.pictureID == id }
+    }
+
+    func loadMoreContentIfNeeded(currentItem id: Int?) {
+      guard let id = id else {
         loadMoreContent()
         return
       }
 
       let thresholdIndex = items.index(items.endIndex, offsetBy: -itemsBeforeReload)
-      if items.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
+      if indexForItem(withID: id) == thresholdIndex {
         loadMoreContent()
       }
     }
@@ -76,7 +85,9 @@ final class LoremPicsumList: ObservableObject {
             .receive(on: DispatchQueue.main)
             .handleEvents(receiveOutput: received(items:))
             .map { self.items + $0 }
-            .catch { _ in Just(self.items) }
+            .catch { error in
+                print("Error loading list from \(url): \(error)")
+                return Just(self.items) }
             .sink { received in
                 self.items = received
             }

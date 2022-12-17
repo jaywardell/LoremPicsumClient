@@ -12,9 +12,11 @@ struct LoremPicsumClientApp: App {
     
     @State private var selectedPictureID: Int?
     
+    @StateObject private var list = LoremPicsumList()
+    
     var body: some Scene {
         WindowGroup {
-            PictureList(dataSource: ExampleDataSource(), selectedID: $selectedPictureID)
+            PictureList(dataSource: list, selectedID: $selectedPictureID)
         }
     }
 }
