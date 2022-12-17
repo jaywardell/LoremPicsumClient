@@ -14,6 +14,8 @@ struct LoremPicsum {
     let height: CGFloat
     let seed: String?
     
+    let isGrayscale: Bool
+    
     // see https://picsum.photos for documenation on the API for LoremPicsum
     
     private static let host = "picsum.photos"
@@ -29,7 +31,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -39,7 +41,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false) }!
     }
     
     static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -49,7 +51,24 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: seed) }!
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height ?? width),
+                            seed: seed, isGrayscale: false)
+            }!
+    }
+    
+    func grayscale() -> LoremPicsum {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            .addingQueryItem("grayscale")
+            .url
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height),
+                            seed: seed, isGrayscale: true)
+            }!
     }
 }
 
@@ -74,4 +93,13 @@ extension URLComponents {
     func addingPathComponent(_ int: Int?) -> URLComponents {
         int.map(addingPathComponent(_:)) ?? self
     }
+    
+    func addingQueryItem(_ string: String) -> URLComponents {
+        var out = self
+        var queryItems = out.queryItems ?? []
+        queryItems.append(URLQueryItem(name: string, value: nil))
+        out.queryItems = queryItems
+        return out
+    }
+
 }

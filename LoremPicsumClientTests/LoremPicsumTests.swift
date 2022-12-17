@@ -67,4 +67,17 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.seed, expected.pathComponents[2])
     }
     
+    func test_grayscale_blur_returns_expected_url() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/200/300?grayscale")
+        let base = sut.randomPicture(width: 200, height: 300)
+
+        let created = base.grayscale()
+        
+        XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+        XCTAssert(created.isGrayscale)
+    }
+
 }
