@@ -21,6 +21,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
         XCTAssertNil(created.seed)
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
     }
     
     func test_randomPicture_returns_expected_url_when_given_1_dimension() {
@@ -32,6 +34,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
         XCTAssertNil(created.seed)
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
     }
 
     func test_picture_returns_the_expected_URL_when_given_2_dimensions() {
@@ -43,6 +47,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
         XCTAssertNil(created.seed)
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
    }
     
     func test_picture_returns_the_expected_URL_when_given_1_dimension() {
@@ -54,7 +60,9 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
         XCTAssertNil(created.seed)
-    }
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
+   }
 
     func test_seededPicture_returns_an_URL_with_a_unique_id() {
         let sut = LoremPicsum.self
@@ -64,6 +72,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
         XCTAssertEqual(created.seed, expected.pathComponents[2])
     }
     
@@ -78,7 +88,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
         XCTAssert(created.isGrayscale)
-    }
+        XCTAssertEqual(created.blurRadius, 0)
+   }
 
     func test_blur_returns_expected_url() {
         let sut = LoremPicsum.self
