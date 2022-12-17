@@ -147,11 +147,13 @@ final class LoremPicsumTests: XCTestCase {
     func test_randomID_returns_expected_url() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200/300?random=clue")
+        let id = "clue"
         let base = sut.randomPicture(width: 200, height: 300)
 
-        let created = base.randomID("clue")
+        let created = base.randomID(id)
         
         XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.randomID, id)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
         XCTAssertFalse(created.isGrayscale)
