@@ -16,7 +16,9 @@ struct LoremPicsumClientApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TopView(list: list)
+            TopView(list: list, viewModelForPictureWithID: {
+                list.picture(for: $0)
+            })
         }
     }
 }

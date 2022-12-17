@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct TopView<ListDataSource: PictureListDataSource>: View {
+struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewModel>: View {
     
     @ObservedObject var list: ListDataSource
 
     @State private var selectedPictureID: Int? = nil
+    
+    let viewModelForPictureWithID: (Int) -> PictureVM?
     
     var body: some View {
         NavigationSplitView {
@@ -20,7 +22,7 @@ struct TopView<ListDataSource: PictureListDataSource>: View {
         }
     detail: {
         if let selectedPictureID = selectedPictureID {
-            PictureView(pictureID: selectedPictureID, viewModel: ExamplePictureViewModel())
+            PictureView(pictureID: selectedPictureID, viewModel: viewModelForPictureWithID(selectedPictureID)!)
         }
         else {
             EmptyView()
@@ -31,6 +33,6 @@ struct TopView<ListDataSource: PictureListDataSource>: View {
 
 struct MasterDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TopView(list: ExampleDataSource())
+        TopView(list: ExampleDataSource(), viewModelForPictureWithID: { _ in ExamplePictureViewModel() })
     }
 }
