@@ -23,7 +23,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     @State private var newWidth: String = ""
     @State private var newHeight: String = ""
 
-    @State private var newShouldBLur = false
+    @State private var newShouldBlur = false
     @State private var newBlurRadius: String = ""
 
     @State private var newFileType: String = ""
@@ -34,23 +34,38 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                 Text("width: ")
                 TextField("width", text: $newWidth)
                     .onChange(of: newWidth) { newValue in
-                        guard let newValue = Int(newValue) else { return }
-                        viewModel.width = newValue
+                        let newValue = Int(newValue) ?? nil
+                        if let newValue = newValue {
+                            viewModel.width = newValue
+                        }
+                        newWidth = String(viewModel.width)
+                    }
+                Stepper("", value: $viewModel.width)
+                    .onChange(of: viewModel.width) { newValue in
+                        newWidth = String(newValue)
                     }
             }
-
+            
+            
             HStack {
                 Text("height: ")
                 TextField("height", text: $newHeight)
                     .onChange(of: newHeight) { newValue in
-                        guard let newValue = Int(newValue) else { return }
-                        viewModel.height = newValue
+                        let newValue = Int(newValue) ?? nil
+                        if let newValue = newValue {
+                            viewModel.height = newValue
+                        }
+                        newHeight = String(viewModel.height)
                     }
-            }
+                Stepper("", value: $viewModel.height)
+                    .onChange(of: viewModel.height) { newValue in
+                        newHeight = String(newValue)
+                    }
+           }
             
             Toggle("grayscale", isOn: $viewModel.grayscale)
 
-            Toggle("blur", isOn: $viewModel.grayscale)
+            Toggle("blur", isOn: $newShouldBlur)
             HStack {
                 Text("blue radius: ")
                 TextField("blur radius", text: $newBlurRadius)
@@ -58,6 +73,9 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         guard let newValue = Int(newValue) else { return }
                         viewModel.blur = newValue > 0 ? newValue : nil
                     }
+            }
+            .onChange(of: newShouldBlur) { newValue in
+                viewModel.blur = newValue ? 1 : nil
             }
 
             Picker(selection: $newFileType, label: Text("file type:")) {
@@ -82,11 +100,11 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
 #if DEBUG
 
 final class ExamplePictureEditorViewModel: PictureEditorViewModel {
-    var width: Int = 768
-    var height: Int = 1024
-    var grayscale: Bool = false
-    var blur: Int?
-    var filetype: UTType?
+    @Published var width: Int = 768
+    @Published var height: Int = 1024
+    @Published var grayscale: Bool = false
+    @Published var blur: Int?
+    @Published var filetype: UTType?
 }
 
 struct PictureEditor_Previews: PreviewProvider {
