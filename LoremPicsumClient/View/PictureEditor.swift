@@ -8,33 +8,33 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-//protocol PictureEditorViewModel: ObservableObject {
-//    var width: Int { get set }
-//    var height: Int { get set }
-//    var grayscale: Bool { get set }
-//    var blur: Int? { get set }
-//    var filetype: UTType? { get set }
-//}
-
-final class PictureEditorViewModel: ObservableObject {
-    var width: Int
-    var height: Int
-    var grayscale: Bool
-    var blur: Int?
-    var filetype: UTType?
-    
-    init(width: Int, height: Int, grayscale: Bool, blur: Int? = nil, filetype: UTType? = nil) {
-        self.width = width
-        self.height = height
-        self.grayscale = grayscale
-        self.blur = blur
-        self.filetype = filetype
-    }
+protocol PictureEditorViewModel: ObservableObject {
+    var width: Int { get set }
+    var height: Int { get set }
+    var grayscale: Bool { get set }
+    var blur: Int? { get set }
+    var filetype: UTType? { get set }
 }
 
-struct PictureEditor: View {
+//final class PictureEditorViewModel: ObservableObject {
+//    var width: Int
+//    var height: Int
+//    var grayscale: Bool
+//    var blur: Int?
+//    var filetype: UTType?
+//
+//    init(width: Int, height: Int, grayscale: Bool, blur: Int? = nil, filetype: UTType? = nil) {
+//        self.width = width
+//        self.height = height
+//        self.grayscale = grayscale
+//        self.blur = blur
+//        self.filetype = filetype
+//    }
+//}
+
+struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
-    @ObservedObject var viewModel: PictureEditorViewModel
+    @ObservedObject var viewModel: ViewModel
     
     @State private var newWidth: String
     @State private var newHeight: String
@@ -44,7 +44,7 @@ struct PictureEditor: View {
 
     @State private var newFileType: String
     
-    init(viewModel: PictureEditorViewModel) {
+    init(viewModel: ViewModel) {
         self.viewModel = viewModel
         self.newWidth = String(viewModel.width)
         self.newHeight = String(viewModel.height)
@@ -182,15 +182,16 @@ struct PictureEditor: View {
 
 #if DEBUG
 
-//final class ExamplePictureEditorViewModel: PictureEditorViewModel {
-//    @Published var width: Int = 768
-//    @Published var height: Int = 1024
-//    @Published var grayscale: Bool = false
-//    @Published var blur: Int?
-//    @Published var filetype: UTType?
-//}
+final class ExamplePictureEditorViewModel: PictureEditorViewModel {
+    @Published var width: Int = 768
+    @Published var height: Int = 1024
+    @Published var grayscale: Bool = false
+    @Published var blur: Int?
+    @Published var filetype: UTType?
+}
+let example = ExamplePictureEditorViewModel()
 
-let example = PictureEditorViewModel(width: 1024, height: 768, grayscale: false)
+//let example = PictureEditorViewModel(width: 1024, height: 768, grayscale: false)
 
 //struct PictureEditor_Previews: PreviewProvider {
 //    static var previews: some View {

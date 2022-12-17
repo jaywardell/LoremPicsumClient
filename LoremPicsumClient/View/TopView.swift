@@ -15,8 +15,7 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
     
     let viewModelForPictureWithID: (Int) -> PictureVM?
     
-    @StateObject private var example = PictureEditorViewModel(width: 1024, height: 1024, grayscale: false)
-    
+    @StateObject private var example = ExamplePictureEditorViewModel()
     var body: some View {
         NavigationSplitView {
             
