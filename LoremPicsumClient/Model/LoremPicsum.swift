@@ -23,51 +23,29 @@ struct LoremPicsum {
         return out
     }
     
-    static func randomPicture(width: Int, height: Int) -> LoremPicsum {
+    static func randomPicture(width: Int, height: Int? = nil) -> LoremPicsum {
         base
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height)) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width)) }!
     }
     
-    static func randomPicture(square width: Int) -> LoremPicsum {
-        base
-            .addingPathComponent(width)
-            .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(width)) }!
-    }
-
-    static func picture(id: Int, width: Int, height: Int) -> LoremPicsum {
+    static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
         base
             .addingPathComponent("id")
             .addingPathComponent(id)
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height)) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width)) }!
     }
-    
-    static func picture(id: Int, square width: Int) -> LoremPicsum {
-        base
-            .addingPathComponent("id")
-            .addingPathComponent(id)
-            .addingPathComponent(width)
-            .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(width)) }!
-    }
-
 }
 
 // MARK: -
 
 extension URLComponents {
-    func with(path: String) -> URLComponents {
-        var out = self
-        out.path = path
-        return out
-    }
-    
+
     func addingPathComponent(_ string: String) -> URLComponents {
         var out = self
         out.path += "/" + string
@@ -77,4 +55,12 @@ extension URLComponents {
     func addingPathComponent(_ int: Int) -> URLComponents {
         addingPathComponent(String(int))
     }
- }
+
+    func addingPathComponent(_ string: String?) -> URLComponents {
+        string.map(addingPathComponent(_:)) ?? self
+    }
+    
+    func addingPathComponent(_ int: Int?) -> URLComponents {
+        int.map(addingPathComponent(_:)) ?? self
+    }
+}

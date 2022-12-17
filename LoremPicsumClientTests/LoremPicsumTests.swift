@@ -26,7 +26,7 @@ final class LoremPicsumTests: XCTestCase {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200")
 
-        let created = sut.randomPicture(square: 200)
+        let created = sut.randomPicture(width: 200)
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
@@ -46,7 +46,7 @@ final class LoremPicsumTests: XCTestCase {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/id/237/200")
 
-        let created = sut.picture(id:237, square: 200)
+        let created = sut.picture(id:237, width: 200)
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
