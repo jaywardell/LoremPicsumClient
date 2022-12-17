@@ -18,6 +18,8 @@ final class LoremPicsumTests: XCTestCase {
 
         let created = sut.randomPicture(width: 200, height: 300)
         XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
     }
     
     func test_randomPicture_returns_expected_url_when_given_1_dimension() {
@@ -26,6 +28,8 @@ final class LoremPicsumTests: XCTestCase {
 
         let created = sut.randomPicture(square: 200)
         XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 200)
     }
 
     func test_picture_returns_the_expected_URL_when_given_2_dimensions() {
@@ -34,7 +38,9 @@ final class LoremPicsumTests: XCTestCase {
 
         let created = sut.picture(id:237, width: 200, height: 300)
         XCTAssertEqual(created.url, expected)
-    }
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+   }
     
     func test_picture_returns_the_expected_URL_when_given_1_dimension() {
         let sut = LoremPicsum.self
@@ -42,6 +48,8 @@ final class LoremPicsumTests: XCTestCase {
 
         let created = sut.picture(id:237, square: 200)
         XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 200)
     }
 
 }

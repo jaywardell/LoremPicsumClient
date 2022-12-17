@@ -10,6 +10,8 @@ import Foundation
 struct LoremPicsum {
     
     let url: URL
+    let width: CGFloat
+    let height: CGFloat
     
     // see https://picsum.photos for documenation on the API for LoremPicsum
 
@@ -26,14 +28,14 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map(LoremPicsum.init(url:))!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height)) }!
     }
     
     static func randomPicture(square width: Int) -> LoremPicsum {
         base
             .addingPathComponent(width)
             .url
-            .map(LoremPicsum.init(url:))!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(width)) }!
     }
 
     static func picture(id: Int, width: Int, height: Int) -> LoremPicsum {
@@ -43,7 +45,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map(LoremPicsum.init(url:))!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height)) }!
     }
     
     static func picture(id: Int, square width: Int) -> LoremPicsum {
@@ -52,7 +54,7 @@ struct LoremPicsum {
             .addingPathComponent(id)
             .addingPathComponent(width)
             .url
-            .map(LoremPicsum.init(url:))!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(width)) }!
     }
 
 }
