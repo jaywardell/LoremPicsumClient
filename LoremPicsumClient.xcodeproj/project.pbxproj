@@ -25,6 +25,7 @@
 		7CEBDF91294E4786000038C8 /* LoremPicsumPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */; };
 		7CEBDF93294E483A000038C8 /* LoremPictureList+Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF92294E483A000038C8 /* LoremPictureList+Picture.swift */; };
 		7CEBDF95294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF94294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift */; };
+		7CEBDF97294E4BAF000038C8 /* PictureEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumPicture.swift; sourceTree = "<group>"; };
 		7CEBDF92294E483A000038C8 /* LoremPictureList+Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPictureList+Picture.swift"; sourceTree = "<group>"; };
 		7CEBDF94294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumPicture+PictureViewModel.swift"; sourceTree = "<group>"; };
+		7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */,
 				7CEBDF85294E2CFF000038C8 /* PictureList.swift */,
 				7CEBDF8A294E3F48000038C8 /* PictureView.swift */,
+				7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */,
 				7CEBDF89294E38E3000038C8 /* LoremPicsumList+PictureListDataSource.swift in Sources */,
 				7CEBDF93294E483A000038C8 /* LoremPictureList+Picture.swift in Sources */,
+				7CEBDF97294E4BAF000038C8 /* PictureEditor.swift in Sources */,
 				7CEBDF84294E1AE6000038C8 /* LoremPicsumList.swift in Sources */,
 				7CEBDF82294E191B000038C8 /* URLComponents+Convenience.swift in Sources */,
 				7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */,
