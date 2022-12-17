@@ -7,7 +7,16 @@
 
 import XCTest
 
+@testable
+import LoremPicsumClient
+
 final class LoremPicsumTests: XCTestCase {
 
+    func test_random_returns_expected_url_when_given_2_dimensions() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/200/300")
 
+        let found = sut.random(width: 200, height: 300)
+        XCTAssertEqual(found, expected)
+    }
 }
