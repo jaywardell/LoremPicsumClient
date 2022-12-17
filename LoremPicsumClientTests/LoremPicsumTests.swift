@@ -24,6 +24,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertNil(created.randomID)
+        XCTAssertNil(created.fileType)
     }
     
     func test_randomPicture_returns_expected_url_when_given_1_dimension() {
@@ -38,6 +39,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertNil(created.randomID)
+        XCTAssertNil(created.fileType)
     }
     
     func test_picture_returns_the_expected_URL_when_given_2_dimensions() {
@@ -52,6 +54,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertNil(created.randomID)
+        XCTAssertNil(created.fileType)
     }
     
     func test_picture_returns_the_expected_URL_when_given_1_dimension() {
@@ -66,7 +69,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertNil(created.randomID)
-    }
+        XCTAssertNil(created.fileType)
+   }
     
     func test_seededPicture_returns_an_URL_with_a_unique_id() {
         let sut = LoremPicsum.self
@@ -80,7 +84,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertEqual(created.seed, expected.pathComponents[2])
         XCTAssertNil(created.randomID)
-    }
+        XCTAssertNil(created.fileType)
+   }
     
     func test_grayscale_returns_expected_url() {
         let sut = LoremPicsum.self
@@ -95,6 +100,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssert(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
         XCTAssertNil(created.randomID)
+        XCTAssertNil(created.fileType)
     }
     
     func test_blur_returns_expected_url() {
@@ -110,6 +116,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 1)
         XCTAssertNil(created.randomID)
+        XCTAssertNil(created.fileType)
     }
     
     func test_blur_respects_radius_passed_in() {
@@ -125,7 +132,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 2)
         XCTAssertNil(created.randomID)
-    }
+        XCTAssertNil(created.fileType)
+   }
     
     func test_blur_works_on_grayscale_items() {
         let sut = LoremPicsum.self
@@ -142,7 +150,8 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssert(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 2)
         XCTAssertNil(created.randomID)
-    }
+        XCTAssertNil(created.fileType)
+   }
     
     func test_randomID_returns_expected_url() {
         let sut = LoremPicsum.self
@@ -158,6 +167,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.height, 300)
         XCTAssertFalse(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
+        XCTAssertNil(created.fileType)
     }
     
     func test_jpg_returns_expected_url() {
