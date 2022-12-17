@@ -20,6 +20,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
+        XCTAssertNil(created.seed)
     }
     
     func test_randomPicture_returns_expected_url_when_given_1_dimension() {
@@ -30,6 +31,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
+        XCTAssertNil(created.seed)
     }
 
     func test_picture_returns_the_expected_URL_when_given_2_dimensions() {
@@ -40,6 +42,7 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
+        XCTAssertNil(created.seed)
    }
     
     func test_picture_returns_the_expected_URL_when_given_1_dimension() {
@@ -50,6 +53,18 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
+        XCTAssertNil(created.seed)
     }
 
+    func test_seededPicture_returns_an_URL_with_a_unique_id() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/seed/picsum/200/300")!
+
+        let created = sut.seededPicture(seed:"picsum", width: 200, height: 300)
+        XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+        XCTAssertEqual(created.seed, expected.pathComponents[2])
+    }
+    
 }

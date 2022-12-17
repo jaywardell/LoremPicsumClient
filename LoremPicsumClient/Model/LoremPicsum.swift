@@ -12,9 +12,10 @@ struct LoremPicsum {
     let url: URL
     let width: CGFloat
     let height: CGFloat
+    let seed: String?
     
     // see https://picsum.photos for documenation on the API for LoremPicsum
-
+    
     private static let host = "picsum.photos"
     private static var base: URLComponents {
         var out = URLComponents()
@@ -28,7 +29,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width)) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -38,7 +39,17 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width)) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil) }!
+    }
+    
+    static func seededPicture(seed: String, width: Int, height: Int? = nil) -> LoremPicsum {
+        base
+            .addingPathComponent("seed")
+            .addingPathComponent(seed)
+            .addingPathComponent(width)
+            .addingPathComponent(height)
+            .url
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: seed) }!
     }
 }
 
