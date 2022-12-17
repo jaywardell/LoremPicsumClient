@@ -19,6 +19,8 @@ struct PictureList<DataSource: PictureListDataSource>: View {
     
     @ObservedObject var dataSource: DataSource
         
+    @Binding var selectedID: Int?
+    
     private func pictureSize(for pictureID: Int, in viewSize: CGSize) -> CGSize {
         let pictureSize = dataSource.pictureSize(for: pictureID)
         let scalar = viewSize.width / pictureSize.width
@@ -26,21 +28,40 @@ struct PictureList<DataSource: PictureListDataSource>: View {
         return CGSize(width: viewSize.width, height: pictureSize.height * scalar)
     }
     
+    private var picturePadding: CGFloat { 100 }
+    private var minimumPictureWidth: CGFloat { 128 }
+
     @ViewBuilder private func cell(for pictureID: Int, listSize: CGSize) -> some View {
-        let pictureSize = pictureSize(for: pictureID, in: listSize)
+        let lSize = CGSize(width: listSize.width - picturePadding, height: listSize.height)
+        let pictureSize = pictureSize(for: pictureID, in: lSize)
         
         let pictureURL = dataSource.pictureURL(for: pictureID, size: pictureSize)
-        LoremPicsumImage(url: pictureURL)
-            .frame(width: pictureSize.width, height: pictureSize.height)
-            .padding()
+        HStack {
+            Spacer()
+            LoremPicsumImage(url: pictureURL)
+                .frame(width: pictureSize.width, height: pictureSize.height)
+            Spacer()
+        }
     }
     
     var body: some View {
         GeometryReader { geometry in
             List(dataSource.pictures, id: \.self) { id in
                 cell(for: id, listSize: geometry.size)
+                    .padding()
+                    .background {
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(lineWidth: 2)
+                            .foregroundColor(.accentColor)
+                            .opacity(id == selectedID ? 1 : 0)
+                    }
+                    .onTapGesture {
+                        selectedID = id
+                    }
             }
         }
+        .frame(minWidth: picturePadding + minimumPictureWidth)
+
     }
 }
 
@@ -62,7 +83,7 @@ final class ExampleDataSource: PictureListDataSource {
 
 struct PictureList_Previews: PreviewProvider {
     static var previews: some View {
-        PictureList(dataSource: ExampleDataSource())
+        PictureList(dataSource: ExampleDataSource(), selectedID: .constant(nil))
     }
 }
 #endif

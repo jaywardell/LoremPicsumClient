@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct LoremPicsumClientApp: App {
+    
+    @State private var selectedPictureID: Int?
+    
     var body: some Scene {
         WindowGroup {
-            PictureList(dataSource: ExampleDataSource())
+            PictureList(dataSource: ExampleDataSource(), selectedID: $selectedPictureID)
         }
     }
 }
