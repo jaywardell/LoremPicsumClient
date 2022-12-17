@@ -74,16 +74,16 @@ struct LoremPicsum {
             }!
     }
     
-    func blur() -> LoremPicsum {
+    func blur(radius: Int? = nil) -> LoremPicsum {
         URLComponents(url: url, resolvingAgainstBaseURL: false)!
-            .addingQueryItem("blur")
+            .addingQueryItem("blur", value: radius.map(String.init))
             .url
             .map {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
                             seed: seed,
-                            isGrayscale: isGrayscale, blurRadius: 1)
+                            isGrayscale: isGrayscale, blurRadius: radius ?? 1)
             }!
     }
 
@@ -111,10 +111,10 @@ extension URLComponents {
         int.map(addingPathComponent(_:)) ?? self
     }
     
-    func addingQueryItem(_ string: String) -> URLComponents {
+    func addingQueryItem(_ string: String, value: String? = nil) -> URLComponents {
         var out = self
         var queryItems = out.queryItems ?? []
-        queryItems.append(URLQueryItem(name: string, value: nil))
+        queryItems.append(URLQueryItem(name: string, value: value))
         out.queryItems = queryItems
         return out
     }

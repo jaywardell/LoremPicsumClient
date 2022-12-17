@@ -91,6 +91,21 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
         XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 1)
+    }
+
+    func test_blur_respects_radius_passed_in() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/200/300?blur=2")
+        let base = sut.randomPicture(width: 200, height: 300)
+
+        let created = base.blur(radius: 2)
+        
+        XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+        XCTAssertFalse(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 2)
     }
 
 }
