@@ -12,6 +12,15 @@ import LoremPicsumClient
 
 final class LoremPicsumTests: XCTestCase {
     
+    func test_infoForPictureWith_id_returns_expected_URL() {
+        let sut = LoremPicsum.self
+        let id = 125
+        let expected = URL(string: "https://picsum.photos/id/125/info")
+
+        let created = sut.infoForPicture(id: id)
+        XCTAssertEqual(created, expected)
+    }
+    
     func test_randomPicture_returns_expected_url_when_given_2_dimensions() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200/300")
