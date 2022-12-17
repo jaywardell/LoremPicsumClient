@@ -34,10 +34,14 @@ struct LoremPicsum {
         return out
     }
     
+    private static var version2: URLComponents {
+        base
+            .addingPathComponent("v2")
+    }
+    
     static func list(page: Int, picturesPerPage: Int) -> URL {
         assert(page > 0, "LoremPicsum pages are indexed from 1")
-        return base
-            .addingPathComponent("v2")
+        return version2
             .addingPathComponent("list")
             .addingQueryItem("page", value: String(page))
             .addingQueryItem("limit", value: String(picturesPerPage))
