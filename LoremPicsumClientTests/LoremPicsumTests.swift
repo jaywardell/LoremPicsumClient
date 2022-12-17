@@ -119,4 +119,20 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created.blurRadius, 2)
     }
 
+    func test_blur_works_on_grayscale_items() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/id/870/200/300?grayscale&blur=2")
+        let base = sut.picture(id: 870, width: 200, height: 300)
+
+        let created = base
+            .grayscale()
+            .blur(radius: 2)
+        
+        XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+        XCTAssert(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 2)
+    }
+
 }
