@@ -10,7 +10,7 @@ import Foundation
 enum LoremPicsum {
     // see https://picsum.photos for documenation on the API for LoremPicsum
 
-    static func random(width: Int, height: Int) -> URL {
+    static func randomPicture(width: Int, height: Int) -> URL {
         URL(string: "https://picsum.photos/\(width)/\(height)")!
     }
     
@@ -18,4 +18,8 @@ enum LoremPicsum {
         URL(string: "https://picsum.photos/\(width)")!
     }
 
+    static func picture(id: Int, width: Int, height: Int) -> URL {
+        URL(string: "https://picsum.photos/id/\(id)/\(width)/\(height)")!
+    }
+    
 }
