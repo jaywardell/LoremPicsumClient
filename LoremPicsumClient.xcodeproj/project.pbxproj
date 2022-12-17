@@ -18,6 +18,7 @@
 		7CEBDF80294DE865000038C8 /* LoremPicsumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF7F294DE865000038C8 /* LoremPicsumTests.swift */; };
 		7CEBDF82294E191B000038C8 /* URLComponents+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF81294E191B000038C8 /* URLComponents+Convenience.swift */; };
 		7CEBDF84294E1AE6000038C8 /* LoremPicsumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */; };
+		7CEBDF86294E2CFF000038C8 /* PictureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF85294E2CFF000038C8 /* PictureList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		7CEBDF7F294DE865000038C8 /* LoremPicsumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumTests.swift; sourceTree = "<group>"; };
 		7CEBDF81294E191B000038C8 /* URLComponents+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Convenience.swift"; sourceTree = "<group>"; };
 		7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumList.swift; sourceTree = "<group>"; };
+		7CEBDF85294E2CFF000038C8 /* PictureList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */,
+				7CEBDF85294E2CFF000038C8 /* PictureList.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				7CEBDF84294E1AE6000038C8 /* LoremPicsumList.swift in Sources */,
 				7CEBDF82294E191B000038C8 /* URLComponents+Convenience.swift in Sources */,
 				7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */,
+				7CEBDF86294E2CFF000038C8 /* PictureList.swift in Sources */,
 				7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */,
 				7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */,
 				7CEBDF7B294DE826000038C8 /* LoremPicsum.swift in Sources */,
