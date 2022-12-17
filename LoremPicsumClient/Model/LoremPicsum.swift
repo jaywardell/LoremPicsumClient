@@ -43,8 +43,8 @@ struct LoremPicsum {
         assert(page > 0, "LoremPicsum pages are indexed from 1")
         return version2
             .addingPathComponent("list")
-            .addingQueryItem("page", value: String(page))
-            .addingQueryItem("limit", value: String(picturesPerPage))
+            .addingQueryItem("page", value: page)
+            .addingQueryItem("limit", value: picturesPerPage)
             .url!
     }
     
@@ -138,7 +138,7 @@ struct LoremPicsum {
     
     func blur(radius: Int? = nil) -> LoremPicsum {
         URLComponents(url: url, resolvingAgainstBaseURL: false)!
-            .addingQueryItem("blur", value: radius.map(String.init))
+            .addingQueryItem("blur", value: radius)
             .url
             .map {
                 LoremPicsum(url: $0,
@@ -241,5 +241,14 @@ extension URLComponents {
         out.queryItems = queryItems
         return out
     }
+
+    func addingQueryItem(_ string: String, value: Int) -> URLComponents {
+        addingQueryItem(string, value: String(value))
+    }
+    
+    func addingQueryItem(_ string: String, value: Int?) -> URLComponents {
+        addingQueryItem(string, value: value.map(String.init))
+    }
+
 
 }
