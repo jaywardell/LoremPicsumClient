@@ -15,6 +15,8 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
     
     let viewModelForPictureWithID: (Int) -> PictureVM?
     
+    @StateObject private var example = PictureEditorViewModel(width: 1024, height: 1024, grayscale: false)
+    
     var body: some View {
         NavigationSplitView {
             
@@ -26,7 +28,7 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
                 PictureView(pictureID: selectedPictureID, viewModel: viewModelForPictureWithID(selectedPictureID)!)
                 Divider()
                 VStack {
-                    PictureEditor(viewModel: ExamplePictureEditorViewModel())
+                    PictureEditor(viewModel: example)
                         .padding()
                     Spacer()
                 }

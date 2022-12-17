@@ -8,25 +8,55 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-protocol PictureEditorViewModel: ObservableObject {
-    var width: Int { get set }
-    var height: Int { get set }
-    var grayscale: Bool { get set }
-    var blur: Int? { get set }
-    var filetype: UTType? { get set }
+//protocol PictureEditorViewModel: ObservableObject {
+//    var width: Int { get set }
+//    var height: Int { get set }
+//    var grayscale: Bool { get set }
+//    var blur: Int? { get set }
+//    var filetype: UTType? { get set }
+//}
+
+final class PictureEditorViewModel: ObservableObject {
+    var width: Int
+    var height: Int
+    var grayscale: Bool
+    var blur: Int?
+    var filetype: UTType?
+    
+    init(width: Int, height: Int, grayscale: Bool, blur: Int? = nil, filetype: UTType? = nil) {
+        self.width = width
+        self.height = height
+        self.grayscale = grayscale
+        self.blur = blur
+        self.filetype = filetype
+    }
 }
 
-struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
+struct PictureEditor: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: PictureEditorViewModel
     
-    @State private var newWidth: String = ""
-    @State private var newHeight: String = ""
+    @State private var newWidth: String
+    @State private var newHeight: String
 
-    @State private var newShouldBlur = false
-    @State private var newBlurRadius: Int = 0
+    @State private var newShouldBlur: Bool
+    @State private var newBlurRadius: Int
 
-    @State private var newFileType: String = ""
+    @State private var newFileType: String
+    
+    init(viewModel: PictureEditorViewModel) {
+        self.viewModel = viewModel
+        self.newWidth = String(viewModel.width)
+        self.newHeight = String(viewModel.height)
+        self.newShouldBlur = viewModel.blur == nil ? false : true
+        self.newBlurRadius = viewModel.blur ?? 0
+        
+        switch viewModel.filetype {
+        case UTType.webP: self.newFileType = "webP"
+        case UTType.jpeg: self.newFileType = "jpeg"
+        default: self.newFileType = ""
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -152,19 +182,21 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
 
 #if DEBUG
 
-final class ExamplePictureEditorViewModel: PictureEditorViewModel {
-    @Published var width: Int = 768
-    @Published var height: Int = 1024
-    @Published var grayscale: Bool = false
-    @Published var blur: Int?
-    @Published var filetype: UTType?
-}
+//final class ExamplePictureEditorViewModel: PictureEditorViewModel {
+//    @Published var width: Int = 768
+//    @Published var height: Int = 1024
+//    @Published var grayscale: Bool = false
+//    @Published var blur: Int?
+//    @Published var filetype: UTType?
+//}
 
-struct PictureEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        PictureEditor(viewModel: ExamplePictureEditorViewModel())
-            .frame(width: 400)
-            .previewLayout(.sizeThatFits)
-    }
-}
+let example = PictureEditorViewModel(width: 1024, height: 768, grayscale: false)
+
+//struct PictureEditor_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PictureEditor(viewModel: example)
+//            .frame(width: 400)
+//            .previewLayout(.sizeThatFits)
+//    }
+//}
 #endif
