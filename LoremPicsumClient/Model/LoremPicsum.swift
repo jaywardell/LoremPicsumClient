@@ -7,6 +7,7 @@
 
 import Foundation
 
+// see https://picsum.photos for documenation on the API for LoremPicsum
 enum LoremPicsum {
     
     static func random(width: Int, height: Int) -> URL {
