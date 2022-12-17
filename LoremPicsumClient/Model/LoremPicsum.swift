@@ -12,4 +12,9 @@ enum LoremPicsum {
     static func random(width: Int, height: Int) -> URL {
         URL(string: "https://picsum.photos/\(width)/\(height)")!
     }
+    
+    static func random(square width: Int) -> URL {
+        URL(string: "https://picsum.photos/\(width)")!
+    }
+
 }
