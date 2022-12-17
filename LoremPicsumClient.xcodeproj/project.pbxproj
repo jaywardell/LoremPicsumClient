@@ -13,7 +13,18 @@
 		7CEBDF5B294DE075000038C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF5A294DE075000038C8 /* Preview Assets.xcassets */; };
 		7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */; };
 		7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */; };
+		7CEBDF71294DE7BA000038C8 /* LoremPicsumClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF70294DE7BA000038C8 /* LoremPicsumClientTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CEBDF72294DE7BA000038C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CEBDF48294DE074000038C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CEBDF4F294DE074000038C8;
+			remoteInfo = LoremPicsumClient;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoremPicsumClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +35,19 @@
 		7CEBDF5C294DE075000038C8 /* LoremPicsumClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoremPicsumClient.entitlements; sourceTree = "<group>"; };
 		7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumImage.swift; sourceTree = "<group>"; };
 		7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+XCodePreviews.swift"; sourceTree = "<group>"; };
+		7CEBDF6E294DE7BA000038C8 /* LoremPicsumClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoremPicsumClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CEBDF70294DE7BA000038C8 /* LoremPicsumClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7CEBDF4D294DE074000038C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CEBDF6B294DE7BA000038C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF52294DE074000038C8 /* LoremPicsumClient */,
+				7CEBDF6F294DE7BA000038C8 /* LoremPicsumClientTests */,
 				7CEBDF51294DE074000038C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */,
+				7CEBDF6E294DE7BA000038C8 /* LoremPicsumClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +97,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7CEBDF6F294DE7BA000038C8 /* LoremPicsumClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF70294DE7BA000038C8 /* LoremPicsumClientTests.swift */,
+			);
+			path = LoremPicsumClientTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,6 +125,24 @@
 			productReference = 7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7CEBDF6D294DE7BA000038C8 /* LoremPicsumClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CEBDF76294DE7BA000038C8 /* Build configuration list for PBXNativeTarget "LoremPicsumClientTests" */;
+			buildPhases = (
+				7CEBDF6A294DE7BA000038C8 /* Sources */,
+				7CEBDF6B294DE7BA000038C8 /* Frameworks */,
+				7CEBDF6C294DE7BA000038C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CEBDF73294DE7BA000038C8 /* PBXTargetDependency */,
+			);
+			name = LoremPicsumClientTests;
+			productName = LoremPicsumClientTests;
+			productReference = 7CEBDF6E294DE7BA000038C8 /* LoremPicsumClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +155,10 @@
 				TargetAttributes = {
 					7CEBDF4F294DE074000038C8 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					7CEBDF6D294DE7BA000038C8 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 7CEBDF4F294DE074000038C8;
 					};
 				};
 			};
@@ -124,6 +176,7 @@
 			projectRoot = "";
 			targets = (
 				7CEBDF4F294DE074000038C8 /* LoremPicsumClient */,
+				7CEBDF6D294DE7BA000038C8 /* LoremPicsumClientTests */,
 			);
 		};
 /* End PBXProject section */
@@ -135,6 +188,13 @@
 			files = (
 				7CEBDF5B294DE075000038C8 /* Preview Assets.xcassets in Resources */,
 				7CEBDF58294DE075000038C8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CEBDF6C294DE7BA000038C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +212,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CEBDF6A294DE7BA000038C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CEBDF71294DE7BA000038C8 /* LoremPicsumClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CEBDF73294DE7BA000038C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CEBDF4F294DE074000038C8 /* LoremPicsumClient */;
+			targetProxy = 7CEBDF72294DE7BA000038C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7CEBDF5D294DE075000038C8 /* Debug */ = {
@@ -322,6 +398,40 @@
 			};
 			name = Release;
 		};
+		7CEBDF74294DE7BA000038C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.LoremPicsumClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoremPicsumClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LoremPicsumClient";
+			};
+			name = Debug;
+		};
+		7CEBDF75294DE7BA000038C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.LoremPicsumClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoremPicsumClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LoremPicsumClient";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -339,6 +449,15 @@
 			buildConfigurations = (
 				7CEBDF60294DE075000038C8 /* Debug */,
 				7CEBDF61294DE075000038C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CEBDF76294DE7BA000038C8 /* Build configuration list for PBXNativeTarget "LoremPicsumClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CEBDF74294DE7BA000038C8 /* Debug */,
+				7CEBDF75294DE7BA000038C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
