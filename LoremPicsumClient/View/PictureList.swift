@@ -12,7 +12,7 @@ protocol PictureListDataSource: ObservableObject {
     
     func pictureURL(for pictureID: Int, size: CGSize) -> URL
     func pictureSize(for pictureID: Int) -> CGSize
-    func loadMoreIfPossible()
+    func loadMoreIfPossible(currentID: Int)
 }
 
 struct PictureList<DataSource: PictureListDataSource>: View {
@@ -58,6 +58,9 @@ struct PictureList<DataSource: PictureListDataSource>: View {
                     .onTapGesture {
                         selectedID = id
                     }
+                    .onAppear {
+                      dataSource.loadMoreIfPossible(currentID: id)
+                    }
             }
         }
         .frame(minWidth: picturePadding + minimumPictureWidth)
@@ -78,7 +81,7 @@ final class ExampleDataSource: PictureListDataSource {
         CGSize(width: 1024, height: 768)
     }
     
-    func loadMoreIfPossible() {}
+    func loadMoreIfPossible(currentID: Int) {}
 }
 
 struct PictureList_Previews: PreviewProvider {
