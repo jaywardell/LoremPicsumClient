@@ -16,7 +16,7 @@ struct LoremPicsumClientApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PictureList(dataSource: list, selectedID: $selectedPictureID)
+            TopView(list: list)
         }
     }
 }
