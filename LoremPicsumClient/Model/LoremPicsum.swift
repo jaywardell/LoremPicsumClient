@@ -7,7 +7,10 @@
 
 import Foundation
 
-enum LoremPicsum {
+struct LoremPicsum {
+    
+    let url: URL
+    
     // see https://picsum.photos for documenation on the API for LoremPicsum
 
     private static let host = "picsum.photos"
@@ -18,27 +21,40 @@ enum LoremPicsum {
         return out
     }
     
-    static func randomPicture(width: Int, height: Int) -> URL {
+    static func randomPicture(width: Int, height: Int) -> LoremPicsum {
         base
             .addingPathComponent(width)
             .addingPathComponent(height)
-            .url!
+            .url
+            .map(LoremPicsum.init(url:))!
     }
     
-    static func randomPicture(square width: Int) -> URL {
+    static func randomPicture(square width: Int) -> LoremPicsum {
         base
             .addingPathComponent(width)
-            .url!
+            .url
+            .map(LoremPicsum.init(url:))!
     }
 
-    static func picture(id: Int, width: Int, height: Int) -> URL {
+    static func picture(id: Int, width: Int, height: Int) -> LoremPicsum {
         base
             .addingPathComponent("id")
             .addingPathComponent(id)
             .addingPathComponent(width)
             .addingPathComponent(height)
-            .url!
+            .url
+            .map(LoremPicsum.init(url:))!
     }
+    
+    static func picture(id: Int, square width: Int) -> LoremPicsum {
+        base
+            .addingPathComponent("id")
+            .addingPathComponent(id)
+            .addingPathComponent(width)
+            .url
+            .map(LoremPicsum.init(url:))!
+    }
+
 }
 
 // MARK: -
