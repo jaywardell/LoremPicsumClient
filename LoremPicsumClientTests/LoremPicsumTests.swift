@@ -185,4 +185,21 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssert(created.isGrayscale)
         XCTAssertEqual(created.blurRadius, 0)
     }
+    
+    func test_webp_returns_expected_url() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/200/300.webp?grayscale")
+        
+        let base = sut.randomPicture(width: 200, height: 300)
+            .grayscale()
+        
+        let created = base.webp()
+        XCTAssertEqual(created.url, expected)
+        XCTAssertEqual(created.fileType, .webP)
+        XCTAssertEqual(created.width, 200)
+        XCTAssertEqual(created.height, 300)
+        XCTAssert(created.isGrayscale)
+        XCTAssertEqual(created.blurRadius, 0)
+    }
+
 }

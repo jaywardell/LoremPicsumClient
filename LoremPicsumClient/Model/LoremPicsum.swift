@@ -116,6 +116,20 @@ struct LoremPicsum {
                             isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: .jpeg)
             }!
     }
+    
+    func webp() -> LoremPicsum {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            .addingPathExtension("webp")
+            .url
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height),
+                            seed: seed, randomID: randomID,
+                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: .webP)
+            }!
+    }
+
 }
 
 // MARK: -
