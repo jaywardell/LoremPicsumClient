@@ -9,8 +9,6 @@ import Foundation
 import Combine
 
 final class LoremPicsumList: ObservableObject {
-    // many thanks to Donny Wals for this approach
-    // https://www.donnywals.com/implementing-an-infinite-scrolling-list-with-swiftui-and-combine/
     
     struct ListItem: Decodable {
         let id: Int
@@ -31,6 +29,9 @@ final class LoremPicsumList: ObservableObject {
 
     }
     
+    // many thanks to Donny Wals for this approach
+    // https://www.donnywals.com/implementing-an-infinite-scrolling-list-with-swiftui-and-combine/
+
     @Published var items = [ListItem]()
     @Published var isLoadingPage = false
     private var currentPage = 1
