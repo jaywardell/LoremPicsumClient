@@ -80,8 +80,9 @@
 			children = (
 				7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */,
 				7CEBDF55294DE074000038C8 /* ContentView.swift */,
-				7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */,
-				7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */,
+				7CEBDF77294DE7F3000038C8 /* Model */,
+				7CEBDF78294DE7F7000038C8 /* View */,
+				7CEBDF79294DE801000038C8 /* Foundation Additions */,
 				7CEBDF57294DE075000038C8 /* Assets.xcassets */,
 				7CEBDF5C294DE075000038C8 /* LoremPicsumClient.entitlements */,
 				7CEBDF59294DE075000038C8 /* Preview Content */,
@@ -103,6 +104,29 @@
 				7CEBDF70294DE7BA000038C8 /* LoremPicsumClientTests.swift */,
 			);
 			path = LoremPicsumClientTests;
+			sourceTree = "<group>";
+		};
+		7CEBDF77294DE7F3000038C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CEBDF78294DE7F7000038C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7CEBDF79294DE801000038C8 /* Foundation Additions */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */,
+			);
+			path = "Foundation Additions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
