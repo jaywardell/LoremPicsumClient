@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 struct LoremPicsum {
     
@@ -17,6 +18,8 @@ struct LoremPicsum {
     
     let isGrayscale: Bool
     let blurRadius: Int
+    
+    let fileType: UTType?
     
     // see https://picsum.photos for documenation on the API for LoremPicsum
     
@@ -33,7 +36,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0, fileType: nil) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -43,7 +46,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0, fileType: nil) }!
     }
     
     static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -58,7 +61,7 @@ struct LoremPicsum {
                             width: CGFloat(width),
                             height: CGFloat(height ?? width),
                             seed: seed, randomID: nil,
-                            isGrayscale: false, blurRadius: 0)
+                            isGrayscale: false, blurRadius: 0, fileType: nil)
             }!
     }
     
@@ -71,7 +74,7 @@ struct LoremPicsum {
                             width: CGFloat(width),
                             height: CGFloat(height),
                             seed: seed, randomID: randomID,
-                            isGrayscale: true, blurRadius: 0)
+                            isGrayscale: true, blurRadius: 0, fileType: nil)
             }!
     }
     
@@ -84,7 +87,7 @@ struct LoremPicsum {
                             width: CGFloat(width),
                             height: CGFloat(height),
                             seed: seed, randomID: randomID,
-                            isGrayscale: isGrayscale, blurRadius: radius ?? 1)
+                            isGrayscale: isGrayscale, blurRadius: radius ?? 1, fileType: nil)
             }!
     }
 
@@ -97,9 +100,22 @@ struct LoremPicsum {
                             width: CGFloat(width),
                             height: CGFloat(height),
                             seed: seed, randomID: id,
-                            isGrayscale: isGrayscale, blurRadius: blurRadius)
+                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: nil)
             }!
    }
+    
+    func jpg() -> LoremPicsum {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            .addingPathExtension("jpg")
+            .url
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height),
+                            seed: seed, randomID: randomID,
+                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: .jpeg)
+            }!
+    }
 }
 
 // MARK: -
@@ -123,7 +139,13 @@ extension URLComponents {
     func addingPathComponent(_ int: Int?) -> URLComponents {
         int.map(addingPathComponent(_:)) ?? self
     }
-    
+
+    func addingPathExtension(_ string: String) -> URLComponents {
+        var out = self
+        out.path += "." + string
+        return out
+    }
+
     func addingQueryItem(_ string: String, value: String? = nil) -> URLComponents {
         var out = self
         var queryItems = out.queryItems ?? []
