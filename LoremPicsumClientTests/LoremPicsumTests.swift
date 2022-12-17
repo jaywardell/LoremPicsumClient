@@ -12,7 +12,7 @@ import LoremPicsumClient
 
 final class LoremPicsumTests: XCTestCase {
 
-    func test_random_returns_expected_url_when_given_2_dimensions() {
+    func test_randomPicture_returns_expected_url_when_given_2_dimensions() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200/300")
 
@@ -20,11 +20,11 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(found, expected)
     }
     
-    func test_random_returns_expected_url_when_given_1_dimension() {
+    func test_randomPicture_returns_expected_url_when_given_1_dimension() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200")
 
-        let found = sut.random(square: 200)
+        let found = sut.randomPicture(square: 200)
         XCTAssertEqual(found, expected)
     }
 
