@@ -22,7 +22,15 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
         }
     detail: {
         if let selectedPictureID = selectedPictureID {
-            PictureView(pictureID: selectedPictureID, viewModel: viewModelForPictureWithID(selectedPictureID)!)
+            HStack {
+                PictureView(pictureID: selectedPictureID, viewModel: viewModelForPictureWithID(selectedPictureID)!)
+                Divider()
+                VStack {
+                    PictureEditor(viewModel: ExamplePictureEditorViewModel())
+                    Spacer()
+                }
+                    .frame(width: 200)
+            }
         }
         else {
             EmptyView()
