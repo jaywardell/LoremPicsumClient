@@ -22,23 +22,38 @@ struct PictureView<ViewModel: PictureViewModel>: View {
     
     var body: some View {
         VStack {
-            LoremPicsumImage(url: viewModel.pictureURL(size: CGSize(width: 512, height: 512)))
-            
-            Text("Author: ").bold() +
-            Text(viewModel.author)
-            
-            Text("original size").bold()
-            Text("width: " + "\(Int(viewModel.pictureSize.width))")
-            Text("height: " + "\(Int(viewModel.pictureSize.height))")
+            Spacer()
+            HStack {
+                Spacer()
+                LoremPicsumImage(url: viewModel.pictureURL(size: CGSize(width: 512, height: 512)))
+                    .frame(width: 300, height: 200)
+                    .shadow(radius: 5)
+                Spacer()
+            }
+
+                Group {
+                    Text("Author: ").bold() +
+                    Text(viewModel.author)
+                }.padding(.bottom)
+
+                
+                
+            Group {
+                Text("Original Size").bold()
+                Text("width: ").bold() + Text("\(Int(viewModel.pictureSize.width))")
+                Text("height: ").bold() + Text("\(Int(viewModel.pictureSize.height))")
+            }
+
+            Spacer()
         }
     }
 }
 
 #if DEBUG
 
-fileprivate final class ExampleViewModel: PictureViewModel {
+final class ExamplePictureViewModel: PictureViewModel {
     
-    var pictureID: Int { 127 }
+    var pictureID: Int { 0 }
     
     func pictureURL(size: CGSize) -> URL {
         LoremPicsum.picture(id: pictureID, width: Int(size.width)).url
@@ -57,7 +72,7 @@ fileprivate final class ExampleViewModel: PictureViewModel {
 
 struct PictureView_Previews: PreviewProvider {
     static var previews: some View {
-        PictureView(pictureID: 127, viewModel: ExampleViewModel())
+        PictureView(pictureID: 127, viewModel: ExamplePictureViewModel())
     }
 }
 #endif
