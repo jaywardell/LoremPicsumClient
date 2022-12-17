@@ -13,6 +13,7 @@ struct LoremPicsum {
     let width: CGFloat
     let height: CGFloat
     let seed: String?
+    let randomID: String?
     
     let isGrayscale: Bool
     let blurRadius: Int
@@ -32,7 +33,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false, blurRadius: 0) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -42,7 +43,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false, blurRadius: 0) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0) }!
     }
     
     static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -56,7 +57,7 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height ?? width),
-                            seed: seed,
+                            seed: seed, randomID: nil,
                             isGrayscale: false, blurRadius: 0)
             }!
     }
@@ -69,7 +70,7 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed,
+                            seed: seed, randomID: randomID,
                             isGrayscale: true, blurRadius: 0)
             }!
     }
@@ -82,11 +83,23 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed,
+                            seed: seed, randomID: randomID,
                             isGrayscale: isGrayscale, blurRadius: radius ?? 1)
             }!
     }
 
+    func randomID(_ id: String?) -> LoremPicsum {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            .addingQueryItem("random", value: id)
+            .url
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height),
+                            seed: seed, randomID: id,
+                            isGrayscale: isGrayscale, blurRadius: blurRadius)
+            }!
+   }
 }
 
 // MARK: -
