@@ -42,7 +42,7 @@ struct LoremPicsum {
             .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil) }!
     }
     
-    static func seededPicture(seed: String, width: Int, height: Int? = nil) -> LoremPicsum {
+    static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
         base
             .addingPathComponent("seed")
             .addingPathComponent(seed)
