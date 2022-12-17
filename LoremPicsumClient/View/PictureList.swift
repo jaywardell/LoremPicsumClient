@@ -17,20 +17,21 @@ protocol PictureListDataSource: ObservableObject {
 struct PictureList<DataSource: PictureListDataSource>: View {
     
     @ObservedObject var dataSource: DataSource
-    
-    let pictureWidth: CGFloat
-    
-    private func pictureSize() -> CGSize {
-        CGSize(width: pictureWidth, height: pictureWidth)
+        
+    private func pictureSize(in viewSize: CGSize) -> CGSize {
+        CGSize(width: viewSize.width, height: viewSize.width)
     }
     
     var body: some View {
-        List(dataSource.pictures, id: \.self) { id in
-            VStack(alignment: .leading) {
-                Text(String(id))
-                let pictureURL = dataSource.pictureURL(for: id, size: pictureSize())
-                LoremPicsumImage(url: pictureURL)
-                    .frame(width: pictureSize().width, height: pictureSize().height)
+        GeometryReader { geometry in
+            let pictureSize = pictureSize(in: geometry.size)
+            List(dataSource.pictures, id: \.self) { id in
+                VStack(alignment: .leading) {
+                    Text(String(id))
+                    let pictureURL = dataSource.pictureURL(for: id, size: pictureSize)
+                    LoremPicsumImage(url: pictureURL)
+                        .frame(width: pictureSize.width, height: pictureSize.height)
+                }
             }
         }
     }
@@ -50,7 +51,7 @@ final class ExampleDataSource: PictureListDataSource {
 
 struct PictureList_Previews: PreviewProvider {
     static var previews: some View {
-        PictureList(dataSource: ExampleDataSource(), pictureWidth: 200)
+        PictureList(dataSource: ExampleDataSource())
     }
 }
 #endif

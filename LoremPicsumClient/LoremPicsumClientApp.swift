@@ -11,7 +11,7 @@ import SwiftUI
 struct LoremPicsumClientApp: App {
     var body: some Scene {
         WindowGroup {
-            PictureList(dataSource: ExampleDataSource(), pictureWidth: 200)
+            PictureList(dataSource: ExampleDataSource())
         }
     }
 }
