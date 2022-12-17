@@ -30,6 +30,15 @@ final class LoremPicsumTests: XCTestCase {
         XCTAssertEqual(created, expected)
     }
 
+    func test_list_returns_expected_URL() {
+        let sut = LoremPicsum.self
+        let expected = URL(string: "https://picsum.photos/v2/list?page=10&limit=100")
+
+        let created = sut.list(page: 10, picturesPerPage: 100)
+        XCTAssertEqual(created, expected)
+    }
+
+    
     func test_randomPicture_returns_expected_url_when_given_2_dimensions() {
         let sut = LoremPicsum.self
         let expected = URL(string: "https://picsum.photos/200/300")
