@@ -15,6 +15,7 @@ struct LoremPicsum {
     let seed: String?
     
     let isGrayscale: Bool
+    let blurRadius: Int
     
     // see https://picsum.photos for documenation on the API for LoremPicsum
     
@@ -31,7 +32,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false, blurRadius: 0) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -41,7 +42,7 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false) }!
+            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, isGrayscale: false, blurRadius: 0) }!
     }
     
     static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -55,7 +56,8 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height ?? width),
-                            seed: seed, isGrayscale: false)
+                            seed: seed,
+                            isGrayscale: false, blurRadius: 0)
             }!
     }
     
@@ -67,9 +69,24 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, isGrayscale: true)
+                            seed: seed,
+                            isGrayscale: true, blurRadius: 0)
             }!
     }
+    
+    func blur() -> LoremPicsum {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            .addingQueryItem("blur")
+            .url
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height),
+                            seed: seed,
+                            isGrayscale: isGrayscale, blurRadius: 1)
+            }!
+    }
+
 }
 
 // MARK: -
