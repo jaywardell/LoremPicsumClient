@@ -12,6 +12,7 @@
 		7CEBDF58294DE075000038C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF57294DE075000038C8 /* Assets.xcassets */; };
 		7CEBDF5B294DE075000038C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF5A294DE075000038C8 /* Preview Assets.xcassets */; };
 		7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */; };
+		7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7CEBDF5A294DE075000038C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CEBDF5C294DE075000038C8 /* LoremPicsumClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoremPicsumClient.entitlements; sourceTree = "<group>"; };
 		7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumImage.swift; sourceTree = "<group>"; };
+		7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+XCodePreviews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */,
 				7CEBDF55294DE074000038C8 /* ContentView.swift */,
+				7CEBDF64294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift */,
 				7CEBDF62294DE240000038C8 /* LoremPicsumImage.swift */,
 				7CEBDF57294DE075000038C8 /* Assets.xcassets */,
 				7CEBDF5C294DE075000038C8 /* LoremPicsumClient.entitlements */,
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */,
 				7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */,
 				7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */,
 				7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */,

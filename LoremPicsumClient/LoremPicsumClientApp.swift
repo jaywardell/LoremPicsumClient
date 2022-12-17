@@ -13,5 +13,6 @@ struct LoremPicsumClientApp: App {
         WindowGroup {
             ContentView()
         }
+        
     }
 }

@@ -11,11 +11,29 @@ struct LoremPicsumImage: View {
     
     let url: URL
     
-    var body: some View {
+    private var progress: some View {
+        ProgressView()
+    }
+    
+    private var image: some View {
         AsyncImage(url: url) { image in
             image.resizable()
         } placeholder: {
-            ProgressView()
+            progress
+        }
+    }
+    
+    var body: some View {
+        // while developing,
+        // we don't want to spam the service
+        // with every edit
+        // so just show a progress view
+        // in the preview
+        if ProcessInfo.isInXCodePreviewCanvass {
+            progress
+        }
+        else {
+            image
         }
     }
 }
