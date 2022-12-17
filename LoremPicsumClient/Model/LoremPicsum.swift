@@ -13,7 +13,10 @@ struct LoremPicsum {
     let url: URL
     let width: CGFloat
     let height: CGFloat
+    
     let seed: String?
+    let id: Int?
+    
     let randomID: String?
     
     let isGrayscale: Bool
@@ -36,7 +39,15 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0, fileType: nil) }!
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height ?? width),
+                            seed: nil, id: nil,
+                            randomID: nil,
+                            isGrayscale: false,
+                            blurRadius: 0,
+                            fileType: nil) }!
     }
     
     static func picture(id: Int, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -46,7 +57,16 @@ struct LoremPicsum {
             .addingPathComponent(width)
             .addingPathComponent(height)
             .url
-            .map { LoremPicsum(url: $0, width: CGFloat(width), height: CGFloat(height ?? width), seed: nil, randomID: nil, isGrayscale: false, blurRadius: 0, fileType: nil) }!
+            .map {
+                LoremPicsum(url: $0,
+                            width: CGFloat(width),
+                            height: CGFloat(height ?? width),
+                            seed: nil,
+                            id: id,
+                            randomID: nil,
+                            isGrayscale: false,
+                            blurRadius: 0,
+                            fileType: nil) }!
     }
     
     static func seededPicture(seed: String = UUID().uuidString, width: Int, height: Int? = nil) -> LoremPicsum {
@@ -60,8 +80,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height ?? width),
-                            seed: seed, randomID: nil,
-                            isGrayscale: false, blurRadius: 0, fileType: nil)
+                            seed: seed,
+                            id: nil,
+                            randomID: nil,
+                            isGrayscale: false,
+                            blurRadius: 0,
+                            fileType: nil)
             }!
     }
     
@@ -73,8 +97,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, randomID: randomID,
-                            isGrayscale: true, blurRadius: 0, fileType: nil)
+                            seed: seed,
+                            id: nil,
+                            randomID: randomID,
+                            isGrayscale: true,
+                            blurRadius: 0,
+                            fileType: nil)
             }!
     }
     
@@ -86,8 +114,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, randomID: randomID,
-                            isGrayscale: isGrayscale, blurRadius: radius ?? 1, fileType: nil)
+                            seed: seed,
+                            id: nil,
+                            randomID: randomID,
+                            isGrayscale: isGrayscale,
+                            blurRadius: radius ?? 1,
+                            fileType: nil)
             }!
     }
 
@@ -99,8 +131,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, randomID: id,
-                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: nil)
+                            seed: seed,
+                            id: nil,
+                            randomID: id,
+                            isGrayscale: isGrayscale,
+                            blurRadius: blurRadius,
+                            fileType: nil)
             }!
    }
     
@@ -112,8 +148,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, randomID: randomID,
-                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: .jpeg)
+                            seed: seed,
+                            id: nil,
+                            randomID: randomID,
+                            isGrayscale: isGrayscale,
+                            blurRadius: blurRadius,
+                            fileType: .jpeg)
             }!
     }
     
@@ -125,8 +165,12 @@ struct LoremPicsum {
                 LoremPicsum(url: $0,
                             width: CGFloat(width),
                             height: CGFloat(height),
-                            seed: seed, randomID: randomID,
-                            isGrayscale: isGrayscale, blurRadius: blurRadius, fileType: .webP)
+                            seed: seed,
+                            id: nil,
+                            randomID: randomID,
+                            isGrayscale: isGrayscale,
+                            blurRadius: blurRadius,
+                            fileType: .webP)
             }!
     }
 

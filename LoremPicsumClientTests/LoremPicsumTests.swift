@@ -44,9 +44,11 @@ final class LoremPicsumTests: XCTestCase {
     
     func test_picture_returns_the_expected_URL_when_given_2_dimensions() {
         let sut = LoremPicsum.self
+        let id = 237
         let expected = URL(string: "https://picsum.photos/id/237/200/300")
         
-        let created = sut.picture(id:237, width: 200, height: 300)
+        let created = sut.picture(id:id, width: 200, height: 300)
+        XCTAssertEqual(created.id, id)
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 300)
@@ -59,9 +61,11 @@ final class LoremPicsumTests: XCTestCase {
     
     func test_picture_returns_the_expected_URL_when_given_1_dimension() {
         let sut = LoremPicsum.self
+        let id = 237
         let expected = URL(string: "https://picsum.photos/id/237/200")
         
         let created = sut.picture(id:237, width: 200)
+        XCTAssertEqual(created.id, id)
         XCTAssertEqual(created.url, expected)
         XCTAssertEqual(created.width, 200)
         XCTAssertEqual(created.height, 200)
