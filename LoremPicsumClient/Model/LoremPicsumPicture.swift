@@ -46,8 +46,20 @@ final class LoremPicsumPicture: ObservableObject {
         self.originalHeight = originalHeight
         self.author = author
         
-        self.width = originalWidth
-        self.height = originalHeight
+        // start out with a scaled image smaller than maxStartingDimension in both dimensions
+        let maxStartingSize = CGSize(width: 800, height: 600)
+        var size = CGSize(width: CGFloat(originalWidth), height: CGFloat(originalHeight))
+        if size.width > maxStartingSize.width {
+            let scalar = maxStartingSize.width / size.width
+            size = CGSize(width: maxStartingSize.width, height: size.height * scalar)
+        }
+        if size.height > maxStartingSize.height {
+            let scalar = maxStartingSize.height / size.height
+            size = CGSize(width: size.width * scalar, height: maxStartingSize.height)
+        }
+
+        self.width = Int(size.width)
+        self.height = Int(size.height)
         
         self.grayscale = false
 
@@ -63,13 +75,5 @@ final class LoremPicsumPicture: ObservableObject {
             .handleEvents(receiveOutput: { [weak self] in self?.objectWillChange.send() })
             .sink(receiveValue: objectWillChange.send)
             .store(in: &subscriptions)
-
-        // start off with a display size
-        // that's less than 1000
-        // in each dimension
-        while self.width > 1000 || self.height > 1000 {
-            self.width /= 2
-            self.height /= 2
-        }
     }
 }
