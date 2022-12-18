@@ -15,6 +15,7 @@ final class LoremPicsumPicture: ObservableObject {
     let originalWidth: Int
     let originalHeight: Int
     let author: String
+    let sourceURL: URL?
     
     var width: Int { willSet { reload.send() } }
     var height: Int { willSet { reload.send() } }
@@ -40,11 +41,14 @@ final class LoremPicsumPicture: ObservableObject {
     init(pictureID: Int,
          originalWidth: Int,
          originalHeight: Int,
-         author: String) {
+         author: String,
+         sourceURL: URL?) {
+        
         self.pictureID = pictureID
         self.originalWidth = originalWidth
         self.originalHeight = originalHeight
         self.author = author
+        self.sourceURL = sourceURL
         
         // start out with a scaled image smaller than maxStartingDimension in both dimensions
         let maxStartingSize = CGSize(width: 800, height: 600)

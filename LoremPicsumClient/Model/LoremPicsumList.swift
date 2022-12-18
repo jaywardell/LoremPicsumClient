@@ -97,7 +97,8 @@ final class LoremPicsumList: ObservableObject {
         return LoremPicsumPicture(pictureID: pictureID,
                            originalWidth: item.width,
                            originalHeight: item.height,
-                           author: item.author ?? "")
+                           author: item.author ?? "",
+                                  sourceURL: item.url)
     }
 
 }
