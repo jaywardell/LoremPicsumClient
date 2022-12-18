@@ -18,12 +18,14 @@ final class LoremPicsumPicture: ObservableObject {
     
     var width: Int { willSet { reload.send() } }
     var height: Int { willSet { reload.send() } }
-    var grayscale: Bool { willSet { reload.send() } }
     var blur: Int? { willSet { reload.send() } }
-    var filetype: UTType? { willSet { reload.send() } }
+    var grayscale: Bool { willSet { quickReload.send() } }
+
+    var filetype: UTType? { willSet { quickReload.send() } }
 
     private let reload = PassthroughSubject<Void, Never>()
-    
+    private let quickReload = PassthroughSubject<Void, Never>()
+
     private(set) var editing = false
     
     private var subscriptions = Set<AnyCancellable>()
@@ -48,7 +50,12 @@ final class LoremPicsumPicture: ObservableObject {
             .handleEvents(receiveOutput: { [weak self] in self?.editing = false })
             .sink(receiveValue: objectWillChange.send)
             .store(in: &subscriptions)
-        
+
+        quickReload
+            .handleEvents(receiveOutput: { [weak self] in self?.objectWillChange.send() })
+            .sink(receiveValue: objectWillChange.send)
+            .store(in: &subscriptions)
+
         // start off with a display size
         // that's less than 1000
         // in each dimension
