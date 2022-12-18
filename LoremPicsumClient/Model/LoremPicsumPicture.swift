@@ -34,5 +34,14 @@ final class LoremPicsumPicture: ObservableObject {
         self.height = originalHeight
         
         self.grayscale = false
+
+        // start off with a display size
+        // that's less than 1000
+        // in each dimension
+        while self.width > 1000 || self.height > 1000 {
+            self.width /= 2
+            self.height /= 2
+        }
+        
     }
 }
