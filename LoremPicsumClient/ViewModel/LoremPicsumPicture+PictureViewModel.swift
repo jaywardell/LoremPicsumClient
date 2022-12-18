@@ -9,7 +9,14 @@ import Foundation
 
 extension LoremPicsumPicture: PictureViewModel {
     func pictureURL(size: CGSize) -> URL {
-        LoremPicsum.picture(id: pictureID, width: Int(size.width), height: Int(size.height)).url
+        var endpoint = LoremPicsum.picture(id: pictureID, width: Int(size.width), height: Int(size.height))
+        if grayscale {
+            endpoint = endpoint.grayscale()
+        }
+        if let blur = blur {
+            endpoint = endpoint.blur(radius: blur)
+        }
+        return endpoint.url
     }
     
     var pictureSize: CGSize {
