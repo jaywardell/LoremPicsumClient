@@ -13,6 +13,7 @@ protocol PictureViewModel: ObservableObject {
     var author: String { get }
     var pictureSize: CGSize { get }
     var displaySize: CGSize { get }
+    func textInfo(size: CGSize) -> [Int: (String, String)]?
 }
 
 
@@ -32,16 +33,32 @@ struct PictureView<ViewModel: PictureViewModel>: View {
         }
     }
 
-    @ViewBuilder private var info: some View {
+    @ViewBuilder private var size: some View {
+        HStack {
+            Text("Original Size:").bold()
+            Text("width: ").bold() + Text("\(Int(viewModel.pictureSize.width))")
+            Text("height: ").bold() + Text("\(Int(viewModel.pictureSize.height))")
+        }
+    }
+
+    @ViewBuilder private var author: some View {
         Group {
             Text("Author: ").bold() +
             Text(viewModel.author)
-        }.padding(.bottom)
-        
-        Group {
-            Text("Original Size").bold()
-            Text("width: ").bold() + Text("\(Int(viewModel.pictureSize.width))")
-            Text("height: ").bold() + Text("\(Int(viewModel.pictureSize.height))")
+        }
+    }
+
+    @ViewBuilder private var copyableStrings: some View {
+        Grid(alignment: .leading) {
+            if let info = viewModel.textInfo(size: viewModel.displaySize) {
+                ForEach(info.keys.sorted(), id: \.self) { key in
+                    GridRow {
+                        Text(info[key]!.0)
+                            .bold()
+                        Text(info[key]!.1)
+                    }
+                }
+            }
         }
     }
     
@@ -61,8 +78,21 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                 Spacer()
             }
 
-            info
-            
+            HStack {
+                VStack(alignment: .leading) {
+                    
+                    author
+                        .padding(.bottom)
+
+                        size
+                        .padding(.bottom)
+                        
+                        copyableStrings
+                }
+                Spacer()
+            }
+            .padding()
+
             Spacer()
         }
     }
@@ -90,6 +120,9 @@ final class ExamplePictureViewModel: PictureViewModel {
         CGSize(width: 1024, height: 768)
     }
     
+    func textInfo(size: CGSize) -> [Int: (String, String)]? {
+        nil
+    }
 }
 
 struct PictureView_Previews: PreviewProvider {

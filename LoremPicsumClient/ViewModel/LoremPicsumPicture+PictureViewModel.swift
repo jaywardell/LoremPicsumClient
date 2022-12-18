@@ -27,4 +27,18 @@ extension LoremPicsumPicture: PictureViewModel {
     var displaySize: CGSize {
         CGSize(width: CGFloat(width), height: CGFloat(height))
     }
+    
+    func textInfo(size: CGSize) -> [Int: (String, String)]? {
+        guard !editing else { return nil }
+
+        var out = [Int: (String, String)]()
+        
+        if let url = pictureURL(size: size) {
+            let urlString = url.absoluteString
+            out[0] = ("url", urlString)
+            out[1] = ("html", "<img src=\"\(urlString)\" />")
+        }
+        
+        return out
+    }
 }
