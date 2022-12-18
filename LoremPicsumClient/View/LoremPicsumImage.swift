@@ -18,6 +18,7 @@ struct LoremPicsumImage: View {
     private var image: some View {
         AsyncImage(url: url) { image in
             image.resizable()
+                .draggable(image)
         } placeholder: {
             progress
         }
