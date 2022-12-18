@@ -22,10 +22,7 @@ struct PictureList<DataSource: PictureListDataSource>: View {
     @ObservedObject var dataSource: DataSource
         
     @Binding var selectedID: Int?
-    
-    enum Filter: String, CaseIterable, Hashable { case all, favorites }
-    @State private var list: Filter = .all
-    
+        
     private func pictureSize(for pictureID: Int, in viewSize: CGSize) -> CGSize {
         let pictureSize = dataSource.pictureSize(for: pictureID)
         let scalar = viewSize.width / pictureSize.width
@@ -70,15 +67,6 @@ struct PictureList<DataSource: PictureListDataSource>: View {
         }
     }
     
-    private func picker() -> some View {
-        Picker("List", selection: $list) {
-            ForEach(Filter.allCases, id: \.self) { option in
-                Text(option.rawValue).tag(option)
-            }
-        }
-        .pickerStyle(SegmentedPickerStyle()) // <1>
-
-    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -100,7 +88,6 @@ struct PictureList<DataSource: PictureListDataSource>: View {
             }
         }
         .frame(minWidth: picturePadding + minimumPictureWidth)
-        .toolbar(content: picker)
     }
 }
 
