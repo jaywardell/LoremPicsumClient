@@ -44,6 +44,10 @@ struct PictureList<DataSource: PictureListDataSource>: View {
                 Spacer()
                     LoremPicsumImage(url: pictureURL)
                         .frame(width: pictureSize.width, height: pictureSize.height)
+                        .overlay{
+                            Rectangle().stroke(Color.accentColor, lineWidth: 2)
+                                .opacity(pictureID == selectedID ? 1 : 0)
+                        }
                 Spacer()
             }
             
@@ -73,12 +77,8 @@ struct PictureList<DataSource: PictureListDataSource>: View {
             List(dataSource.pictures, id: \.self) { id in
                 cell(for: id, listSize: geometry.size)
                     .padding()
-                    .background {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(lineWidth: 2)
-                            .foregroundColor(.accentColor)
-                            .opacity(id == selectedID ? 1 : 0)
-                    }
+                    .shadow(
+                            radius: id == selectedID ? 10 : 0)
                     .onTapGesture {
                         selectedID = id
                     }
