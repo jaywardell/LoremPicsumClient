@@ -28,9 +28,21 @@ struct PictureView<ViewModel: PictureViewModel>: View {
             .frame(width: displaySize.width, height: displaySize.height)
             .background(Rectangle().stroke(lineWidth: 2).foregroundColor(Color(nsColor: .labelColor)))
             .shadow(radius: 5)
-
     }
 
+    @ViewBuilder private var info: some View {
+        Group {
+            Text("Author: ").bold() +
+            Text(viewModel.author)
+        }.padding(.bottom)
+        
+        Group {
+            Text("Original Size").bold()
+            Text("width: ").bold() + Text("\(Int(viewModel.pictureSize.width))")
+            Text("height: ").bold() + Text("\(Int(viewModel.pictureSize.height))")
+        }
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -39,28 +51,12 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                 ScrollView([.vertical, .horizontal]) {
   
                     image
-//                    let displaySize = viewModel.displaySize
-//                    LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
-//                        .frame(width: displaySize.width, height: displaySize.height)
-//                        .background(Rectangle().stroke(2).foregroundColor(Color(nsColor: .linkColor)))
-//                        .shadow(radius: 5)
                 }
                 Spacer()
             }
 
-                Group {
-                    Text("Author: ").bold() +
-                    Text(viewModel.author)
-                }.padding(.bottom)
-
-                
-                
-            Group {
-                Text("Original Size").bold()
-                Text("width: ").bold() + Text("\(Int(viewModel.pictureSize.width))")
-                Text("height: ").bold() + Text("\(Int(viewModel.pictureSize.height))")
-            }
-
+            info
+            
             Spacer()
         }
     }
