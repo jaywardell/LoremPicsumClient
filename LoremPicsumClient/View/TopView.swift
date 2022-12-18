@@ -54,7 +54,7 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewPictureM
                         .padding()
                     Spacer()
                 }
-                .frame(width: 240)
+                .frame(width: 233)
             }
         }
         else {
