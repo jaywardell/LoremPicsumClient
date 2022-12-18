@@ -15,6 +15,8 @@ protocol PictureViewModel: ObservableObject {
     var displaySize: CGSize { get }
     func textInfo(size: CGSize) -> [Int: (String, String)]?
     func open(url: URL)
+    
+    var isFavorite: Bool { get set }
 }
 
 
@@ -93,7 +95,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
 
             Divider()
 
-            HStack {
+            HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     
                     author
@@ -105,6 +107,12 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                         sourceExamples
                 }
                 Spacer()
+                
+                Toggle(isOn: $viewModel.isFavorite) {
+                    Text("Favorite")
+                }
+                .toggleStyle(ImagesToggleStyle(offImageName: "star", onImageName: "star.fill"))
+                .labelsHidden()
             }
             .padding()
 
@@ -118,6 +126,8 @@ struct PictureView<ViewModel: PictureViewModel>: View {
 final class ExamplePictureViewModel: PictureViewModel {
     
     var pictureID: Int { 0 }
+    
+    var isFavorite: Bool = false
     
     func pictureURL(size: CGSize) -> URL? {
         LoremPicsum.picture(id: pictureID, width: Int(size.width)).url
@@ -140,11 +150,27 @@ final class ExamplePictureViewModel: PictureViewModel {
     }
     
     func open(url: URL) {}
+    
 }
 
 struct PictureView_Previews: PreviewProvider {
     static var previews: some View {
         PictureView(viewModel: ExamplePictureViewModel())
+            .previewLayout(.fixed(width: 300, height: 300))
     }
 }
 #endif
+
+struct ImagesToggleStyle: ToggleStyle {
+    
+    let offImageName: String
+    let onImageName: String
+    
+    func makeBody(configuration: Configuration) -> some View {
+            Image(systemName: configuration.isOn ? onImageName : offImageName)
+                .resizable()
+                .foregroundColor(configuration.isOn ? Color.yellow : Color(nsColor: .labelColor))
+                .frame(width: 22, height: 22)
+                .onTapGesture { configuration.isOn.toggle() }
+    }
+}

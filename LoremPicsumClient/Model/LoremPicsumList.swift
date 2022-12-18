@@ -43,7 +43,11 @@ final class LoremPicsumList: ObservableObject {
     private var itemsPerPage: Int { 10 }
     private var itemsBeforeReload: Int { 3 }
 
-    init() {
+    let favorites: Favorites
+    
+    init(favorites: Favorites) {
+        self.favorites = favorites
+        
         loadMoreContent()
     }
 
@@ -99,7 +103,8 @@ final class LoremPicsumList: ObservableObject {
                            originalWidth: item.width,
                            originalHeight: item.height,
                            author: item.author ?? "",
-                                  sourceURL: item.url)
+                                  sourceURL: item.url,
+                                  favorites: favorites)
     }
 
 }

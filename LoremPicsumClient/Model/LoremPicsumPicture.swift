@@ -24,6 +24,20 @@ final class LoremPicsumPicture: ObservableObject {
 
     var filetype: UTType? { willSet { quickReload.send() } }
 
+    var isFavorite: Bool {
+        didSet {
+            if isFavorite {
+                favorites.add(pictureID)
+            }
+            else {
+                favorites.remove(pictureID)
+            }
+            objectWillChange.send()
+        }
+    }
+    
+    let favorites: Favorites
+    
     // there are some properties, like blurRadius,
     // that the user will often change many times
     // in a short period of time
@@ -42,13 +56,17 @@ final class LoremPicsumPicture: ObservableObject {
          originalWidth: Int,
          originalHeight: Int,
          author: String,
-         sourceURL: URL?) {
+         sourceURL: URL?,
+         favorites: Favorites) {
         
         self.pictureID = pictureID
         self.originalWidth = originalWidth
         self.originalHeight = originalHeight
         self.author = author
         self.sourceURL = sourceURL
+        
+        self.favorites = favorites
+        self.isFavorite = favorites.pictureIsFavorite(id: pictureID)
         
         // start out with a scaled image smaller than maxStartingDimension in both dimensions
         let maxStartingSize = CGSize(width: 800, height: 600)
