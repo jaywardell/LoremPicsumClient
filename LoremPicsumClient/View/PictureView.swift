@@ -52,11 +52,13 @@ struct PictureView<ViewModel: PictureViewModel>: View {
         Grid(alignment: .leading) {
             if let info = viewModel.textInfo(size: viewModel.displaySize) {
                 ForEach(info.keys.sorted(), id: \.self) { key in
-                    GridRow {
-                        Text(info[key]!.0)
-                            .bold()
-                        Text(info[key]!.1)
-                            .textSelection(.enabled)
+                    if let (title, body) = info[key] {
+                        GridRow {
+                            Text(title)
+                                .bold()
+                            Text(body)
+                                .textSelection(.enabled)
+                        }
                     }
                 }
             }
