@@ -8,7 +8,8 @@
 import Foundation
 
 extension LoremPicsumPicture: PictureViewModel {
-    func pictureURL(size: CGSize) -> URL {
+    func pictureURL(size: CGSize) -> URL? {
+        guard !editing else { return nil }
         var endpoint = LoremPicsum.picture(id: pictureID, width: Int(size.width), height: Int(size.height))
         if grayscale {
             endpoint = endpoint.grayscale()

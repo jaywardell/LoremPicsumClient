@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import UniformTypeIdentifiers
 
 final class LoremPicsumPicture: ObservableObject {
@@ -15,12 +16,17 @@ final class LoremPicsumPicture: ObservableObject {
     let originalHeight: Int
     let author: String
     
-    @Published var width: Int
-    @Published var height: Int
-    @Published var grayscale: Bool
-    @Published var blur: Int?
-    @Published var filetype: UTType?
+    var width: Int { willSet { reload.send() } }
+    var height: Int { willSet { reload.send() } }
+    var grayscale: Bool { willSet { reload.send() } }
+    var blur: Int? { willSet { reload.send() } }
+    var filetype: UTType? { willSet { reload.send() } }
 
+    private let reload = PassthroughSubject<Void, Never>()
+    
+    private(set) var editing = false
+    
+    private var subscriptions = Set<AnyCancellable>()
     init(pictureID: Int,
          originalWidth: Int,
          originalHeight: Int,
@@ -35,6 +41,14 @@ final class LoremPicsumPicture: ObservableObject {
         
         self.grayscale = false
 
+        reload
+            .handleEvents(receiveOutput: { [weak self] in self?.editing = true })
+            .handleEvents(receiveOutput: { [weak self] in self?.objectWillChange.send() })
+            .throttle(for: 1, scheduler: RunLoop.main, latest: true)
+            .handleEvents(receiveOutput: { [weak self] in self?.editing = false })
+            .sink(receiveValue: objectWillChange.send)
+            .store(in: &subscriptions)
+        
         // start off with a display size
         // that's less than 1000
         // in each dimension
@@ -42,6 +56,5 @@ final class LoremPicsumPicture: ObservableObject {
             self.width /= 2
             self.height /= 2
         }
-        
     }
 }

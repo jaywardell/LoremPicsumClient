@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol PictureViewModel: ObservableObject {
     var pictureID: Int { get }
-    func pictureURL(size: CGSize) -> URL
+    func pictureURL(size: CGSize) -> URL?
     var author: String { get }
     var pictureSize: CGSize { get }
     var displaySize: CGSize { get }
@@ -22,12 +22,14 @@ struct PictureView<ViewModel: PictureViewModel>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    private var image: some View {
+    @ViewBuilder private var image: some View {
         let displaySize = viewModel.displaySize
-        return LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
-            .frame(width: displaySize.width, height: displaySize.height)
-            .background(Rectangle().stroke(lineWidth: 2).foregroundColor(Color(nsColor: .labelColor)))
-            .shadow(radius: 5)
+        if let url = viewModel.pictureURL(size: displaySize) {
+            LoremPicsumImage(url: url)
+        }
+        else {
+            ProgressView()
+        }
     }
 
     @ViewBuilder private var info: some View {
@@ -51,6 +53,10 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                 ScrollView([.vertical, .horizontal]) {
   
                     image
+                        .frame(width: viewModel.displaySize.width, height: viewModel.displaySize.height)
+                        .background(Rectangle().stroke(lineWidth: 2).foregroundColor(Color(nsColor: .labelColor)))
+                        .shadow(radius: 5)
+
                 }
                 Spacer()
             }
@@ -68,7 +74,7 @@ final class ExamplePictureViewModel: PictureViewModel {
     
     var pictureID: Int { 0 }
     
-    func pictureURL(size: CGSize) -> URL {
+    func pictureURL(size: CGSize) -> URL? {
         LoremPicsum.picture(id: pictureID, width: Int(size.width)).url
     }
     
