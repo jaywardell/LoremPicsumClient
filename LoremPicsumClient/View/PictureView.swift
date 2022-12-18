@@ -14,6 +14,7 @@ protocol PictureViewModel: ObservableObject {
     var pictureSize: CGSize { get }
     var displaySize: CGSize { get }
     func textInfo(size: CGSize) -> [Int: (String, String)]?
+    func open(url: URL)
 }
 
 
@@ -58,6 +59,14 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                                 .bold()
                             Text(body)
                                 .textSelection(.enabled)
+                            if let url = URL(string: body) {
+                                Button {
+                                    viewModel.open(url: url)
+                                } label: {
+                                    Image(systemName: "arrowshape.turn.up.right")
+                                }
+                                .buttonStyle(.borderless)
+                            }
                         }
                     }
                 }
@@ -129,6 +138,8 @@ final class ExamplePictureViewModel: PictureViewModel {
     func textInfo(size: CGSize) -> [Int: (String, String)]? {
         nil
     }
+    
+    func open(url: URL) {}
 }
 
 struct PictureView_Previews: PreviewProvider {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 import UniformTypeIdentifiers
 
 extension LoremPicsumPicture: PictureViewModel {
@@ -53,5 +54,9 @@ extension LoremPicsumPicture: PictureViewModel {
         }
         
         return out
+    }
+    
+    func open(url: URL) {
+        NSWorkspace.shared.open(url)
     }
 }
