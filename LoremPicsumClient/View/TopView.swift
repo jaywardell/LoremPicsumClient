@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-protocol TopViewModel: ObservableObject, PictureViewModel, PictureEditorViewModel {}
+protocol TopViewPictureModel: ObservableObject, PictureViewModel, PictureEditorViewModel {}
 
-struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: View {
+struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewPictureModel>: View {
     
     @ObservedObject var list: ListDataSource
     
