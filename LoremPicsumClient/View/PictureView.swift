@@ -15,23 +15,35 @@ protocol PictureViewModel: ObservableObject {
     var displaySize: CGSize { get }
 }
 
+
 struct PictureView<ViewModel: PictureViewModel>: View {
     
     let pictureID: Int
     
     @ObservedObject var viewModel: ViewModel
     
+    private var image: some View {
+        let displaySize = viewModel.displaySize
+        return LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
+            .frame(width: displaySize.width, height: displaySize.height)
+            .background(Rectangle().stroke(lineWidth: 2).foregroundColor(Color(nsColor: .labelColor)))
+            .shadow(radius: 5)
+
+    }
+
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 Spacer()
                 ScrollView([.vertical, .horizontal]) {
-                    
-                    let displaySize = viewModel.displaySize
-                    LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
-                        .frame(width: displaySize.width, height: displaySize.height)
-                        .shadow(radius: 5)
+  
+                    image
+//                    let displaySize = viewModel.displaySize
+//                    LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
+//                        .frame(width: displaySize.width, height: displaySize.height)
+//                        .background(Rectangle().stroke(2).foregroundColor(Color(nsColor: .linkColor)))
+//                        .shadow(radius: 5)
                 }
                 Spacer()
             }
