@@ -106,6 +106,20 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                     }
                 }
                 
+                GridRow {
+                    Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+
+                    HStack {
+                        Button(action: increaseImageSize) {
+                            Image(systemName: "plus.circle")
+                        }
+
+                        Button(action: decreaseImageSize) {
+                            Image(systemName: "minus.circle")
+                        }
+                    }
+                }
+                
                 Divider()
                     .gridCellUnsizedAxes(.horizontal)
 
@@ -178,6 +192,16 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
         }
         .padding()
     }
+    
+    private func decreaseImageSize() {
+        newWidth = String(Int(Double(newWidth)! * 0.9))
+        newHeight = String(Int(Double(newHeight)! * 0.9))
+    }
+
+    private func increaseImageSize() {
+        newWidth = String(Int(Double(newWidth)! * 1.1))
+        newHeight = String(Int(Double(newHeight)! * 1.1))
+    }
 }
 
 #if DEBUG
@@ -193,11 +217,11 @@ let example = ExamplePictureEditorViewModel()
 
 //let example = PictureEditorViewModel(width: 1024, height: 768, grayscale: false)
 
-//struct PictureEditor_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PictureEditor(viewModel: example)
-//            .frame(width: 400)
-//            .previewLayout(.sizeThatFits)
-//    }
-//}
+struct PictureEditor_Previews: PreviewProvider {
+    static var previews: some View {
+        PictureEditor(viewModel: example)
+            .frame(width: 400)
+            .previewLayout(.sizeThatFits)
+    }
+}
 #endif
