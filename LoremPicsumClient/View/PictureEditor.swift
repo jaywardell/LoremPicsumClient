@@ -113,10 +113,12 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         Button(action: increaseImageSize) {
                             Image(systemName: "plus.circle")
                         }
+                        .buttonStyle(.borderless)
 
                         Button(action: decreaseImageSize) {
                             Image(systemName: "minus.circle")
                         }
+                        .buttonStyle(.borderless)
                     }
                 }
                 
