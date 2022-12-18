@@ -23,5 +23,7 @@ extension LoremPicsumPicture: PictureViewModel {
         CGSize(width: Int(originalWidth), height: Int(originalHeight))
     }
     
-    
+    var displaySize: CGSize {
+        CGSize(width: CGFloat(width), height: CGFloat(height))
+    }
 }

@@ -12,6 +12,7 @@ protocol PictureViewModel: ObservableObject {
     func pictureURL(size: CGSize) -> URL
     var author: String { get }
     var pictureSize: CGSize { get }
+    var displaySize: CGSize { get }
 }
 
 struct PictureView<ViewModel: PictureViewModel>: View {
@@ -25,8 +26,9 @@ struct PictureView<ViewModel: PictureViewModel>: View {
             Spacer()
             HStack {
                 Spacer()
-                LoremPicsumImage(url: viewModel.pictureURL(size: CGSize(width: 512, height: 512)))
-                    .frame(width: 300, height: 200)
+                let displaySize = viewModel.displaySize
+                LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
+                    .frame(width: displaySize.width, height: displaySize.height)
                     .shadow(radius: 5)
                 Spacer()
             }
@@ -67,6 +69,9 @@ final class ExamplePictureViewModel: PictureViewModel {
         CGSize(width: 1024, height: 768)
     }
     
+    var displaySize: CGSize {
+        CGSize(width: 1024, height: 768)
+    }
     
 }
 
