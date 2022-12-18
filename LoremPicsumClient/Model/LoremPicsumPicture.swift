@@ -23,7 +23,15 @@ final class LoremPicsumPicture: ObservableObject {
 
     var filetype: UTType? { willSet { quickReload.send() } }
 
+    // there are some properties, like blurRadius,
+    // that the user will often change many times
+    // in a short period of time
+    // these changed should be throttled
+    // to avoid excessive network traffic
     private let reload = PassthroughSubject<Void, Never>()
+    
+    // and then there are others that are usually changed just once
+    // like grayscale, since it's a boolean
     private let quickReload = PassthroughSubject<Void, Never>()
 
     private(set) var editing = false
