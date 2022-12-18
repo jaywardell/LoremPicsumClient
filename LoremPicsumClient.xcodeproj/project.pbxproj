@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CAC6AA1294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA0294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift */; };
 		7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */; };
 		7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF55294DE074000038C8 /* ContentView.swift */; };
 		7CEBDF58294DE075000038C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF57294DE075000038C8 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		7CEBDF93294E483A000038C8 /* LoremPictureList+Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF92294E483A000038C8 /* LoremPictureList+Picture.swift */; };
 		7CEBDF95294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF94294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift */; };
 		7CEBDF97294E4BAF000038C8 /* PictureEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */; };
+		7CEBDF99294E6F3F000038C8 /* LoremPicsumPicture+PictureEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF98294E6F3F000038C8 /* LoremPicsumPicture+PictureEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7CAC6AA0294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumPicture+TopViewModel.swift"; sourceTree = "<group>"; };
 		7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoremPicsumClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumClientApp.swift; sourceTree = "<group>"; };
 		7CEBDF55294DE074000038C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		7CEBDF92294E483A000038C8 /* LoremPictureList+Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPictureList+Picture.swift"; sourceTree = "<group>"; };
 		7CEBDF94294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumPicture+PictureViewModel.swift"; sourceTree = "<group>"; };
 		7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEditor.swift; sourceTree = "<group>"; };
+		7CEBDF98294E6F3F000038C8 /* LoremPicsumPicture+PictureEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumPicture+PictureEditorView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,8 @@
 			children = (
 				7CEBDF88294E38E3000038C8 /* LoremPicsumList+PictureListDataSource.swift */,
 				7CEBDF94294E4997000038C8 /* LoremPicsumPicture+PictureViewModel.swift */,
+				7CEBDF98294E6F3F000038C8 /* LoremPicsumPicture+PictureEditorView.swift */,
+				7CAC6AA0294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 				7CEBDF8B294E3F48000038C8 /* PictureView.swift in Sources */,
 				7CEBDF86294E2CFF000038C8 /* PictureList.swift in Sources */,
 				7CEBDF91294E4786000038C8 /* LoremPicsumPicture.swift in Sources */,
+				7CEBDF99294E6F3F000038C8 /* LoremPicsumPicture+PictureEditorView.swift in Sources */,
+				7CAC6AA1294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift in Sources */,
 				7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */,
 				7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */,
 				7CEBDF7B294DE826000038C8 /* LoremPicsum.swift in Sources */,

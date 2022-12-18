@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewModel>: View {
+protocol TopViewModel: ObservableObject, PictureViewModel, PictureEditorViewModel {}
+
+struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: View {
     
     @ObservedObject var list: ListDataSource
-
+    
     @State private var selectedPictureID: Int? = nil
+
+    let viewModelForPictureWithID: (Int) -> ViewModel?
     
-    let viewModelForPictureWithID: (Int) -> PictureVM?
-    
-    @StateObject private var example = ExamplePictureEditorViewModel()
     var body: some View {
         NavigationSplitView {
             
@@ -23,15 +24,16 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
         }
     detail: {
         if let selectedPictureID = selectedPictureID {
+            let viewModel = viewModelForPictureWithID(selectedPictureID)!
             HStack {
-                PictureView(pictureID: selectedPictureID, viewModel: viewModelForPictureWithID(selectedPictureID)!)
+                PictureView(pictureID: selectedPictureID, viewModel: viewModel)
                 Divider()
                 VStack {
-                    PictureEditor(viewModel: example)
+                    PictureEditor(viewModel: viewModel)
                         .padding()
                     Spacer()
                 }
-                    .frame(width: 240)
+                .frame(width: 240)
             }
         }
         else {
@@ -41,8 +43,8 @@ struct TopView<ListDataSource: PictureListDataSource, PictureVM: PictureViewMode
     }
 }
 
-struct MasterDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        TopView(list: ExampleDataSource(), viewModelForPictureWithID: { _ in ExamplePictureViewModel() })
-    }
-}
+//struct MasterDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TopView(list: ExampleDataSource(), viewModelForPictureWithID: { _ in ExamplePictureViewModel() })
+//    }
+//}
