@@ -8,24 +8,9 @@
 import Foundation
 
 extension LoremPicsumList: PictureListDataSource {
-    var pictures: [Int] { items.map(\.pictureID) }
-    
-    func pictureURL(for pictureID: Int, size: CGSize) -> URL {
-        return LoremPicsum.picture(id: pictureID, width: Int(size.width)).url
-    }
-    
-    func pictureSize(for pictureID: Int) -> CGSize {
-        guard let picture = item(withID: pictureID) else { return .zero }
-        
-        return CGSize(width: CGFloat(picture.width), height: CGFloat(picture.height))
-    }
+    // NOTE: most of the compliance for PictureListDataSource is actually covered by methods in LoremPicsumPictureSource
     
     func loadMoreIfPossible(currentID: Int) {
         loadMoreContentIfNeeded(currentItem: currentID)
     }
-    
-    func pictureIsFavorite(_ pictureID: Int) -> Bool {
-        favorites.pictureIsFavorite(id: pictureID)
-    }
-    
 }
