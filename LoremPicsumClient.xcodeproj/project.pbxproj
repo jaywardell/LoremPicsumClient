@@ -93,6 +93,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CAC6AAC294FA5D600D3CADB /* Accessing API */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF7A294DE826000038C8 /* LoremPicsum.swift */,
+			);
+			path = "Accessing API";
+			sourceTree = "<group>";
+		};
+		7CAC6AAD294FA5E100D3CADB /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
+		7CAC6AAE294FA5ED00D3CADB /* Picture Lists */ = {
+			isa = PBXGroup;
+			children = (
+				7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */,
+				7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */,
+				7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */,
+				7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */,
+			);
+			path = "Picture Lists";
+			sourceTree = "<group>";
+		};
+		7CAC6AAF294FA60200D3CADB /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				7CAC6AA2294F7A1600D3CADB /* Favorites.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		7CEBDF47294DE074000038C8 = {
 			isa = PBXGroup;
 			children = (
@@ -147,13 +182,10 @@
 		7CEBDF77294DE7F3000038C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */,
-				7CEBDF7A294DE826000038C8 /* LoremPicsum.swift */,
-				7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */,
-				7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */,
-				7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */,
-				7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */,
-				7CAC6AA2294F7A1600D3CADB /* Favorites.swift */,
+				7CAC6AAC294FA5D600D3CADB /* Accessing API */,
+				7CAC6AAD294FA5E100D3CADB /* Pictures */,
+				7CAC6AAE294FA5ED00D3CADB /* Picture Lists */,
+				7CAC6AAF294FA60200D3CADB /* Favorites */,
 			);
 			path = Model;
 			sourceTree = "<group>";
