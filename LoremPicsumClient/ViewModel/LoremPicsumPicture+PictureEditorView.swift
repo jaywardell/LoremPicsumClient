@@ -7,4 +7,7 @@
 
 import Foundation
 
-extension LoremPicsumPicture: PictureEditorViewModel {}
+extension LoremPicsumPicture: PictureEditorViewModel {
+    var sourceWidth: Int { originalWidth }
+    var sourceHeight: Int { originalHeight }    
+}

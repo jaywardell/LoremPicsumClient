@@ -11,6 +11,10 @@ import UniformTypeIdentifiers
 protocol PictureEditorViewModel: ObservableObject {
     var width: Int { get set }
     var height: Int { get set }
+
+    var sourceWidth: Int { get }
+    var sourceHeight: Int { get }
+
     var grayscale: Bool { get set }
     var blur: Int? { get set }
     var filetype: UTType? { get set }
@@ -198,8 +202,8 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     }
 
     private func increaseImageSize() {
-        newWidth = String(Int(Double(newWidth)! * scaling))
-        newHeight = String(Int(Double(newHeight)! * scaling))
+        newWidth = String(min(Int(Double(newWidth)! * scaling), viewModel.sourceWidth))
+        newHeight = String(min(Int(Double(newHeight)! * scaling), viewModel.sourceHeight))
     }
 }
 
@@ -211,6 +215,8 @@ final class ExamplePictureEditorViewModel: PictureEditorViewModel {
     @Published var grayscale: Bool = false
     @Published var blur: Int?
     @Published var filetype: UTType?
+    var sourceWidth: Int = 768
+    var sourceHeight: Int = 1024
 }
 let example = ExamplePictureEditorViewModel()
 
