@@ -26,10 +26,13 @@ struct PictureView<ViewModel: PictureViewModel>: View {
             Spacer()
             HStack {
                 Spacer()
-                let displaySize = viewModel.displaySize
-                LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
-                    .frame(width: displaySize.width, height: displaySize.height)
-                    .shadow(radius: 5)
+                ScrollView([.vertical, .horizontal]) {
+                    
+                    let displaySize = viewModel.displaySize
+                    LoremPicsumImage(url: viewModel.pictureURL(size: displaySize))
+                        .frame(width: displaySize.width, height: displaySize.height)
+                        .shadow(radius: 5)
+                }
                 Spacer()
             }
 
