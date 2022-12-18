@@ -147,13 +147,13 @@
 		7CEBDF77294DE7F3000038C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */,
 				7CEBDF7A294DE826000038C8 /* LoremPicsum.swift */,
 				7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */,
 				7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */,
 				7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */,
 				7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */,
 				7CAC6AA2294F7A1600D3CADB /* Favorites.swift */,
-				7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

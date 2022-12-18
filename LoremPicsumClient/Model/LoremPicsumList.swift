@@ -9,29 +9,6 @@ import Foundation
 import Combine
 
 final class LoremPicsumList: ObservableObject, LoremPicsumPictureSource {
-    
-    struct ListItem: Decodable {
-        let id: String
-        let author: String?
-        let width: Int
-        let height: Int
-        let url: URL?
-        let downloadURL: URL?
-        
-        var pictureID: Int { Int(id)! }
-        
-        // JSON:
-        //{
-        //        "id": "0",
-        //        "author": "Alejandro Escamilla",
-        //        "width": 5616,
-        //        "height": 3744,
-        //        "url": "https://unsplash.com/...",
-        //        "download_url": "https://picsum.photos/..."
-        //}
-
-    }
-    
     // many thanks to Donny Wals for this approach
     // https://www.donnywals.com/implementing-an-infinite-scrolling-list-with-swiftui-and-combine/
 
@@ -91,25 +68,4 @@ final class LoremPicsumList: ObservableObject, LoremPicsumPictureSource {
                 return Just(self.items) }
             .assign(to: &$items)
     }
-    
-    // MARK: - individual Pictures
-
-    func indexForItem(withID id: Int) -> Int? {
-        items.firstIndex { $0.pictureID == id }
-    }
-    
-    func item(withID id: Int) -> ListItem? {
-        items.first { $0.pictureID == id }
-    }
-
-    func picture(for pictureID: Int) -> LoremPicsumPicture? {
-        guard let item = item(withID: pictureID) else { return nil }
-        return LoremPicsumPicture(pictureID: pictureID,
-                           originalWidth: item.width,
-                           originalHeight: item.height,
-                           author: item.author ?? "",
-                                  sourceURL: item.url,
-                                  favorites: favorites)
-    }
-
 }
