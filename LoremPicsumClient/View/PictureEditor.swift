@@ -193,14 +193,15 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
         .padding()
     }
     
+    private var scaling: CGFloat { 1.1 }
     private func decreaseImageSize() {
-        newWidth = String(Int(Double(newWidth)! * 0.9))
-        newHeight = String(Int(Double(newHeight)! * 0.9))
+        newWidth = String(Int(Double(newWidth)! * 1/scaling))
+        newHeight = String(Int(Double(newHeight)! * 1/scaling))
     }
 
     private func increaseImageSize() {
-        newWidth = String(Int(Double(newWidth)! * 1.1))
-        newHeight = String(Int(Double(newHeight)! * 1.1))
+        newWidth = String(Int(Double(newWidth)! * scaling))
+        newHeight = String(Int(Double(newHeight)! * scaling))
     }
 }
 
