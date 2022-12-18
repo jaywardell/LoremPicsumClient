@@ -30,7 +30,6 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: 
         .onChange(of: filter) { newValue in
             print(newValue)
         }
-        
     }
 
     var body: some View {
