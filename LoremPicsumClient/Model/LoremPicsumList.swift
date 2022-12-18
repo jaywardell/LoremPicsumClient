@@ -20,14 +20,15 @@ final class LoremPicsumList: ObservableObject {
         
         var pictureID: Int { Int(id)! }
         
-//        {
-//                "id": "0",
-//                "author": "Alejandro Escamilla",
-//                "width": 5616,
-//                "height": 3744,
-//                "url": "https://unsplash.com/...",
-//                "download_url": "https://picsum.photos/..."
-//        }
+        // JSON:
+        //{
+        //        "id": "0",
+        //        "author": "Alejandro Escamilla",
+        //        "width": 5616,
+        //        "height": 3744,
+        //        "url": "https://unsplash.com/...",
+        //        "download_url": "https://picsum.photos/..."
+        //}
 
     }
     
