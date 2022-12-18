@@ -12,7 +12,7 @@ struct LoremPicsumClientApp: App {
     
     @State private var selectedPictureID: Int?
     
-    private var list = LoremPicsumList(favorites: Favorites())
+    private var list = LoremPicsumFavoritesList(favorites: Favorites())
     
     var body: some Scene {
         WindowGroup {
