@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
 
 extension LoremPicsumPicture: PictureViewModel {
     func pictureURL(size: CGSize) -> URL? {
@@ -17,6 +18,14 @@ extension LoremPicsumPicture: PictureViewModel {
         if let blur = blur {
             endpoint = endpoint.blur(radius: blur)
         }
+        
+        if filetype == .jpeg {
+            endpoint = endpoint.jpg()
+        }
+        else if filetype == .webP {
+            endpoint = endpoint.webp()
+        }
+        
         return endpoint.url
     }
     
