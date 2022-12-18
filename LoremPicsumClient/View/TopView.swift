@@ -17,9 +17,10 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: 
 
     let viewModelForPictureWithID: (Int) -> ViewModel?
     
-    enum Filter: String, CaseIterable, Hashable { case all, favorites }
     @State private var filter: Filter = .all
 
+    let filterChanged: (Filter)->()
+    
     private func picker() -> some View {
         Picker("List", selection: $filter) {
             ForEach(Filter.allCases, id: \.self) { option in
@@ -28,7 +29,7 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: 
         }
         .pickerStyle(SegmentedPickerStyle())
         .onChange(of: filter) { newValue in
-            print(newValue)
+            filterChanged(newValue)
         }
     }
 

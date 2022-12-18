@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class LoremPicsumList: ObservableObject {
+final class LoremPicsumList: ObservableObject, LoremPicsumPictureSource {
     
     struct ListItem: Decodable {
         let id: String

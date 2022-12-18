@@ -11,6 +11,8 @@
 		7CAC6AA3294F7A1600D3CADB /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA2294F7A1600D3CADB /* Favorites.swift */; };
 		7CAC6AA5294F9AA400D3CADB /* LoremPicsumFavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */; };
 		7CAC6AA7294F9BF300D3CADB /* LoremPicsumFavoritesList+PictureListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA6294F9BF300D3CADB /* LoremPicsumFavoritesList+PictureListDataSource.swift */; };
+		7CAC6AA9294F9DAE00D3CADB /* UserChosenList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */; };
+		7CAC6AAB294FA05800D3CADB /* LoremPicsumPictureSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */; };
 		7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */; };
 		7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEBDF55294DE074000038C8 /* ContentView.swift */; };
 		7CEBDF58294DE075000038C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF57294DE075000038C8 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		7CAC6AA2294F7A1600D3CADB /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumFavoritesList.swift; sourceTree = "<group>"; };
 		7CAC6AA6294F9BF300D3CADB /* LoremPicsumFavoritesList+PictureListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumFavoritesList+PictureListDataSource.swift"; sourceTree = "<group>"; };
+		7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChosenList.swift; sourceTree = "<group>"; };
+		7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumPictureSource.swift; sourceTree = "<group>"; };
 		7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoremPicsumClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumClientApp.swift; sourceTree = "<group>"; };
 		7CEBDF55294DE074000038C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,7 +151,9 @@
 				7CEBDF90294E4786000038C8 /* LoremPicsumPicture.swift */,
 				7CEBDF83294E1AE6000038C8 /* LoremPicsumList.swift */,
 				7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */,
+				7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */,
 				7CAC6AA2294F7A1600D3CADB /* Favorites.swift */,
+				7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */,
 				7CEBDF89294E38E3000038C8 /* LoremPicsumList+PictureListDataSource.swift in Sources */,
 				7CEBDF97294E4BAF000038C8 /* PictureEditor.swift in Sources */,
+				7CAC6AAB294FA05800D3CADB /* LoremPicsumPictureSource.swift in Sources */,
 				7CEBDF84294E1AE6000038C8 /* LoremPicsumList.swift in Sources */,
 				7CEBDF82294E191B000038C8 /* URLComponents+Convenience.swift in Sources */,
 				7CEBDF56294DE074000038C8 /* ContentView.swift in Sources */,
@@ -299,6 +306,7 @@
 				7CAC6AA1294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift in Sources */,
 				7CAC6AA7294F9BF300D3CADB /* LoremPicsumFavoritesList+PictureListDataSource.swift in Sources */,
 				7CEBDF63294DE240000038C8 /* LoremPicsumImage.swift in Sources */,
+				7CAC6AA9294F9DAE00D3CADB /* UserChosenList.swift in Sources */,
 				7CEBDF54294DE074000038C8 /* LoremPicsumClientApp.swift in Sources */,
 				7CEBDF7B294DE826000038C8 /* LoremPicsum.swift in Sources */,
 				7CAC6AA3294F7A1600D3CADB /* Favorites.swift in Sources */,

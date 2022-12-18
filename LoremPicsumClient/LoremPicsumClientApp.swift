@@ -12,12 +12,14 @@ struct LoremPicsumClientApp: App {
     
     @State private var selectedPictureID: Int?
     
-    private var list = LoremPicsumFavoritesList(favorites: Favorites())
+    private var list = UserChosenList(favorites: Favorites())
     
     var body: some Scene {
         WindowGroup {
             TopView(list: list, viewModelForPictureWithID: {
                 list.picture(for: $0)
+            }, filterChanged: {
+                list.filter = $0
             })
         }
     }
