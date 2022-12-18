@@ -74,10 +74,13 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                         .frame(width: viewModel.displaySize.width, height: viewModel.displaySize.height)
                         .background(Rectangle().stroke(lineWidth: 2).foregroundColor(Color(nsColor: .labelColor)))
                         .shadow(radius: 5)
+                        .padding()
 
                 }
                 Spacer()
             }
+
+            Divider()
 
             HStack {
                 VStack(alignment: .leading) {
