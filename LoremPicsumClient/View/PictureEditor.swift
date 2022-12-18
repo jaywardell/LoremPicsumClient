@@ -150,6 +150,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                             Stepper("", value: $newBlurRadius)
                                 .onChange(of: newBlurRadius) { newValue in
                                     viewModel.blur = min(10, max(1, newValue))
+                                    newBlurRadius = viewModel.blur ?? 0
                                 }
                                 .help("increase or decrease blur")
                         }
