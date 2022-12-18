@@ -124,22 +124,18 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                     .gridCellUnsizedAxes(.horizontal)
 
                 GridRow {
-//                    HStack {}
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                     Toggle("grayscale", isOn: $viewModel.grayscale)
-//                    HStack {}
                 }
                 
                 Divider()
                     .gridCellUnsizedAxes(.horizontal)
 
                 GridRow {
-//                    HStack {}
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                     Toggle("blur", isOn: $newShouldBlur)
                 }
                 GridRow {
-//                    HStack {}
                     Group {
                         Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                         HStack {
@@ -151,13 +147,6 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                                 }
                         }
 
-//                        TextField("blur radius", text: $newBlurRadius)
-//                            .frame(width: 100)
-//                            .onChange(of: newBlurRadius) { newValue in
-//                                guard let newValue = Int(newValue) else { return }
-//                                viewModel.blur = newValue > 0 ? min(10, max(1, newValue)) : nil
-//                                newBlurRadius = viewModel.blur.map(String.init) ?? ""
-//                            }
                     }
                     .opacity(viewModel.blur == nil ? 0 : 1)
                 }
