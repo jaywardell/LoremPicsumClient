@@ -13,6 +13,8 @@ protocol PictureListDataSource: ObservableObject {
     func pictureURL(for pictureID: Int, size: CGSize) -> URL
     func pictureSize(for pictureID: Int) -> CGSize
     func loadMoreIfPossible(currentID: Int)
+    
+    func pictureIsFavorite(_ pictureID: Int) -> Bool
 }
 
 struct PictureList<DataSource: PictureListDataSource>: View {
@@ -36,11 +38,32 @@ struct PictureList<DataSource: PictureListDataSource>: View {
         let pictureSize = pictureSize(for: pictureID, in: lSize)
         
         let pictureURL = dataSource.pictureURL(for: pictureID, size: pictureSize)
-        HStack {
-            Spacer()
-            LoremPicsumImage(url: pictureURL)
-                .frame(width: pictureSize.width, height: pictureSize.height)
-            Spacer()
+        
+        ZStack {
+            HStack {
+                Spacer()
+                    LoremPicsumImage(url: pictureURL)
+                        .frame(width: pictureSize.width, height: pictureSize.height)
+                Spacer()
+            }
+            
+            if dataSource.pictureIsFavorite(pictureID) {
+                VStack {
+                    HStack(alignment: .top) {
+                        Image(systemName: "star.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.yellow)
+                            .background {
+                                Circle()
+                                    .fill(.ultraThinMaterial)
+                                    .shadow(radius: 2)
+                            }
+                            .offset(y: -10)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+            }
         }
     }
     
@@ -82,6 +105,10 @@ final class ExampleDataSource: PictureListDataSource {
     }
     
     func loadMoreIfPossible(currentID: Int) {}
+    
+    func pictureIsFavorite(_ pictureID: Int) -> Bool {
+        Bool.random()
+    }
 }
 
 struct PictureList_Previews: PreviewProvider {

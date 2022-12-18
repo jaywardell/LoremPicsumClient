@@ -24,5 +24,8 @@ extension LoremPicsumList: PictureListDataSource {
         loadMoreContentIfNeeded(currentItem: currentID)
     }
     
+    func pictureIsFavorite(_ pictureID: Int) -> Bool {
+        favorites.pictureIsFavorite(id: pictureID)
+    }
     
 }
