@@ -26,7 +26,7 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: 
         if let selectedPictureID = selectedPictureID {
             let viewModel = viewModelForPictureWithID(selectedPictureID)!
             HStack {
-                PictureView(pictureID: selectedPictureID, viewModel: viewModel)
+                PictureView(viewModel: viewModel)
                 Divider()
                 VStack {
                     PictureEditor(viewModel: viewModel)

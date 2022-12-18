@@ -20,7 +20,6 @@ protocol PictureViewModel: ObservableObject {
 
 struct PictureView<ViewModel: PictureViewModel>: View {
     
-    let pictureID: Int
     
     @ObservedObject var viewModel: ViewModel
     
@@ -145,7 +144,7 @@ final class ExamplePictureViewModel: PictureViewModel {
 
 struct PictureView_Previews: PreviewProvider {
     static var previews: some View {
-        PictureView(pictureID: 127, viewModel: ExamplePictureViewModel())
+        PictureView(viewModel: ExamplePictureViewModel())
     }
 }
 #endif
