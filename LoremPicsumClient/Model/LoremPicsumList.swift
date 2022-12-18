@@ -45,14 +45,6 @@ final class LoremPicsumList: ObservableObject {
     init() {
         loadMoreContent()
     }
-        
-    func indexForItem(withID id: Int) -> Int? {
-        items.firstIndex { $0.pictureID == id }
-    }
-    
-    func item(withID id: Int) -> ListItem? {
-        items.first { $0.pictureID == id }
-    }
 
     func loadMoreContentIfNeeded(currentItem id: Int?) {
       guard let id = id else {
@@ -66,7 +58,6 @@ final class LoremPicsumList: ObservableObject {
       }
     }
 
-    private var loading: AnyCancellable?
     private func loadMoreContent() {
         guard !isLoadingPage && canLoadMorePages else { return }
                 
@@ -79,7 +70,7 @@ final class LoremPicsumList: ObservableObject {
         }
 
         let url = LoremPicsum.list(page: currentPage, picturesPerPage: itemsPerPage)
-        loading = URLSession.shared.dataTaskPublisher(for: url)
+        URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: [ListItem].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
@@ -88,8 +79,25 @@ final class LoremPicsumList: ObservableObject {
             .catch { error in
                 print("Error loading list from \(url): \(error)")
                 return Just(self.items) }
-            .sink { received in
-                self.items = received
-            }
+            .assign(to: &$items)
     }
+    
+    // MARK: - individual Pictures
+
+    func indexForItem(withID id: Int) -> Int? {
+        items.firstIndex { $0.pictureID == id }
+    }
+    
+    func item(withID id: Int) -> ListItem? {
+        items.first { $0.pictureID == id }
+    }
+
+    func picture(for pictureID: Int) -> LoremPicsumPicture? {
+        guard let item = item(withID: pictureID) else { return nil }
+        return LoremPicsumPicture(pictureID: pictureID,
+                           originalWidth: item.width,
+                           originalHeight: item.height,
+                           author: item.author ?? "")
+    }
+
 }
