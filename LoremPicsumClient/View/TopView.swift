@@ -23,8 +23,8 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewModel>: 
             PictureList(dataSource: list, selectedID: $selectedPictureID)
         }
     detail: {
-        if let selectedPictureID = selectedPictureID {
-            let viewModel = viewModelForPictureWithID(selectedPictureID)!
+        if let selectedPictureID = selectedPictureID,
+           let viewModel = viewModelForPictureWithID(selectedPictureID) {
             HStack {
                 PictureView(viewModel: viewModel)
                 Divider()
