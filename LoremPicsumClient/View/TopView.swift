@@ -38,13 +38,17 @@ struct TopView<ListDataSource: PictureListDataSource, ViewModel: TopViewPictureM
             
             PictureList(dataSource: list, selectedID: $selectedPictureID)
                 .toolbar(content: picker)
+                .frame(minWidth: 233)
         }
     detail: {
         if let selectedPictureID = selectedPictureID,
            let viewModel = viewModelForPictureWithID(selectedPictureID) {
             HStack {
                 PictureView(viewModel: viewModel)
+                    .frame(minWidth: 377)
+
                 Divider()
+
                 VStack {
                     PictureEditor(viewModel: viewModel)
                         .padding()
