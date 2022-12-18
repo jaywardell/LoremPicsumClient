@@ -56,6 +56,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                         Text(info[key]!.0)
                             .bold()
                         Text(info[key]!.1)
+                            .textSelection(.enabled)
                     }
                 }
             }
