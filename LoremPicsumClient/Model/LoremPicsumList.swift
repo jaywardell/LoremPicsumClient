@@ -45,10 +45,15 @@ final class LoremPicsumList: ObservableObject {
 
     let favorites: Favorites
     
+    
+    private var subscriptions = Set<AnyCancellable>()
     init(favorites: Favorites) {
         self.favorites = favorites
         
         loadMoreContent()
+        
+        favorites.updated.sink(receiveValue: objectWillChange.send)
+        .store(in: &subscriptions)
     }
 
     func loadMoreContentIfNeeded(currentItem id: Int?) {

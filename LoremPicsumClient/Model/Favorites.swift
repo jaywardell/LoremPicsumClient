@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 final class Favorites {
     
     var favorites = Set<Int>()
+    
+    let updated = PassthroughSubject<Void, Never>()
     
     init() {
         self.load()
@@ -22,11 +25,13 @@ final class Favorites {
     func add(_ pictureID: Int) {
         favorites.insert(pictureID)
         archive()
+        updated.send()
     }
     
     func remove(_ pictureID: Int) {
         favorites.remove(pictureID)
         archive()
+        updated.send()
     }
 
     static var ArchiveKey: String { "\(Self.self):\(#function)" }
