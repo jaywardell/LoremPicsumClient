@@ -46,7 +46,7 @@ extension LoremPicsumPicture: PictureViewModel {
         if let url = pictureURL(size: size) {
             let urlString = url.absoluteString
             out[0] = ("url", urlString)
-            out[1] = ("html", "<img src=\"\(urlString)\" />")
+            out[100] = ("html", "<img src=\"\(urlString)\" />")
         }
         
         if let url = sourceURL {

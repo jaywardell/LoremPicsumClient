@@ -64,6 +64,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                                     viewModel.open(url: url)
                                 } label: {
                                     Image(systemName: "arrowshape.turn.up.right")
+                                        .font(.callout)
                                 }
                                 .buttonStyle(.borderless)
                             }
