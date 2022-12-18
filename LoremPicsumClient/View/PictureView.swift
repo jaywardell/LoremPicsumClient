@@ -48,7 +48,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
         }
     }
 
-    @ViewBuilder private var copyableStrings: some View {
+    @ViewBuilder private var sourceExamples: some View {
         Grid(alignment: .leading) {
             if let info = viewModel.textInfo(size: viewModel.displaySize) {
                 ForEach(info.keys.sorted(), id: \.self) { key in
@@ -87,7 +87,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                         size
                         .padding(.bottom)
                         
-                        copyableStrings
+                        sourceExamples
                 }
                 Spacer()
             }
