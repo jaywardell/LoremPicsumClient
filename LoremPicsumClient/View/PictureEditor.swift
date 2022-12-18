@@ -114,11 +114,13 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                             Image(systemName: "plus.circle")
                         }
                         .buttonStyle(.borderless)
+                        .help("Increase size proportionally")
 
                         Button(action: decreaseImageSize) {
                             Image(systemName: "minus.circle")
                         }
                         .buttonStyle(.borderless)
+                        .help("Decrease size proportionally")
                     }
                 }
                 
@@ -128,6 +130,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                 GridRow {
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                     Toggle("grayscale", isOn: $viewModel.grayscale)
+                        .help("switch picture to grayscale")
                 }
                 
                 Divider()
@@ -136,6 +139,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                 GridRow {
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
                     Toggle("blur", isOn: $newShouldBlur)
+                        .help("blur picture")
                 }
                 GridRow {
                     Group {
@@ -147,6 +151,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                                 .onChange(of: newBlurRadius) { newValue in
                                     viewModel.blur = min(10, max(1, newValue))
                                 }
+                                .help("increase or decrease blur")
                         }
 
                     }
@@ -178,6 +183,7 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         }
                     }
                     .pickerStyle(RadioGroupPickerStyle())
+                    .help("choose what file type is returned")
                 }
             }
         }
