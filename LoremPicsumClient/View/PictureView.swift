@@ -55,7 +55,7 @@ struct PictureView<ViewModel: PictureViewModel>: View {
                 ForEach(info.keys.sorted(), id: \.self) { key in
                     if let (title, body) = info[key] {
                         GridRow {
-                            Text(title)
+                            Text(title + ":")
                                 .bold()
                             Text(body)
                                 .textSelection(.enabled)
