@@ -6,11 +6,11 @@ This was something I did for fun, and maybe for my own use. It's a client for br
 
 With LoremIpsumCLient, you can:
 
-• browse the list of pictures available from [Lorem Picsum](https://picsum.photos)
-• request and preview specific sizes of those images
-• request grayscale or blurred versions of those images
-• receive copyable URLs and html examples of using the image with the settings you choose.
-• drag the image, with any modifications, to other apps
+* browse the list of pictures available from [Lorem Picsum](https://picsum.photos)
+* request and preview specific sizes of those images
+* request grayscale or blurred versions of those images
+* receive copyable URLs and html examples of using the image with the settings you choose.
+* drag the image, with any modifications, to other apps
 
 As I say, it's a very simple app, meant to be a a toy for development.  Still, I could see where some people might find it useful.  If you're interested in how someone does a simple infinite scrolling REST client app using SwiftUI, this might be a good project to look at.
 
