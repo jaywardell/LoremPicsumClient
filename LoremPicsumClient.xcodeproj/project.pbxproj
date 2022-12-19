@@ -51,6 +51,7 @@
 		7CAC6AA6294F9BF300D3CADB /* LoremPicsumFavoritesList+PictureListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumFavoritesList+PictureListDataSource.swift"; sourceTree = "<group>"; };
 		7CAC6AA8294F9DAE00D3CADB /* UserChosenList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChosenList.swift; sourceTree = "<group>"; };
 		7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumPictureSource.swift; sourceTree = "<group>"; };
+		7CAC6AB0294FDB2F00D3CADB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoremPicsumClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumClientApp.swift; sourceTree = "<group>"; };
 		7CEBDF55294DE074000038C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		7CEBDF47294DE074000038C8 = {
 			isa = PBXGroup;
 			children = (
+				7CAC6AB0294FDB2F00D3CADB /* README.md */,
 				7CEBDF52294DE074000038C8 /* LoremPicsumClient */,
 				7CEBDF6F294DE7BA000038C8 /* LoremPicsumClientTests */,
 				7CEBDF51294DE074000038C8 /* Products */,
