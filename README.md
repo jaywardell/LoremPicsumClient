@@ -14,6 +14,8 @@ With LoremIpsumClient, you can:
 
 As I say, it's a very simple app, meant to be a a toy for development.  Still, I could see where some people might find it useful.  If you're interested in how someone does a simple infinite scrolling REST client app using SwiftUI, this might be a good project to look at.
 
+<img src="https://github.com/jaywardell/LoremPicsumClient/raw/main/promotional/screenshots/screenshot1.png" width=500 height=352 />
+
 ## Architecture:
 
 This app is a SwiftUI app written using MVVM, with heavy use of protocol-driven development and Combine. Every view of any consequence takes a view model of a given protocol. Model objects are extended to support these view model protocols. 
