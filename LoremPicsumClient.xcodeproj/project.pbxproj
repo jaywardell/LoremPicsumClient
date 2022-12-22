@@ -53,6 +53,7 @@
 		7CAC6AAA294FA05800D3CADB /* LoremPicsumPictureSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumPictureSource.swift; sourceTree = "<group>"; };
 		7CAC6AB0294FDB2F00D3CADB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7CCD5A2829540398004D13D7 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		7CCD5A2929540465004D13D7 /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		7CEBDF50294DE074000038C8 /* LoremPicsumClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoremPicsumClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEBDF53294DE074000038C8 /* LoremPicsumClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumClientApp.swift; sourceTree = "<group>"; };
 		7CEBDF55294DE074000038C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,11 +131,28 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
+		7CCD5A2A29540473004D13D7 /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				7CCD5A2929540465004D13D7 /* screenshot1.png */,
+			);
+			path = screenshots;
+			sourceTree = "<group>";
+		};
+		7CCD5A2B29540480004D13D7 /* promotional */ = {
+			isa = PBXGroup;
+			children = (
+				7CCD5A2A29540473004D13D7 /* screenshots */,
+			);
+			path = promotional;
+			sourceTree = "<group>";
+		};
 		7CEBDF47294DE074000038C8 = {
 			isa = PBXGroup;
 			children = (
 				7CAC6AB0294FDB2F00D3CADB /* README.md */,
 				7CCD5A2829540398004D13D7 /* license.txt */,
+				7CCD5A2B29540480004D13D7 /* promotional */,
 				7CEBDF52294DE074000038C8 /* LoremPicsumClient */,
 				7CEBDF6F294DE7BA000038C8 /* LoremPicsumClientTests */,
 				7CEBDF51294DE074000038C8 /* Products */,
