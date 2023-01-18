@@ -23,7 +23,8 @@ protocol PictureEditorViewModel: ObservableObject {
 struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
     @ObservedObject var viewModel: ViewModel
-    
+
+    // TODO: are these really necessary now?
     @State private var newWidth: Int
     @State private var newHeight: Int
 
