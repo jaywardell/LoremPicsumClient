@@ -20,22 +20,6 @@ protocol PictureEditorViewModel: ObservableObject {
     var filetype: UTType? { get set }
 }
 
-//final class PictureEditorViewModel: ObservableObject {
-//    var width: Int
-//    var height: Int
-//    var grayscale: Bool
-//    var blur: Int?
-//    var filetype: UTType?
-//
-//    init(width: Int, height: Int, grayscale: Bool, blur: Int? = nil, filetype: UTType? = nil) {
-//        self.width = width
-//        self.height = height
-//        self.grayscale = grayscale
-//        self.blur = blur
-//        self.filetype = filetype
-//    }
-//}
-
 struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
     @ObservedObject var viewModel: ViewModel
@@ -71,10 +55,16 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         Text("width: ")
                     }
                     HStack {
-                        TextField("width", value: $viewModel.width, format: .ranged(1...Int.max, defaultValue: viewModel.width))
+                        TextField("width", value: $newWidth, format: .ranged(1...Int.max, defaultValue: newWidth))
                             .frame(width: 100)
-                        Stepper("", value: $viewModel.width)
+                        Stepper("", value: $newWidth)
                     }
+                }
+                .onChange(of: newWidth) { newValue in
+                    viewModel.width = newValue
+                }
+                .onChange(of: viewModel.width) { newValue in
+                    newWidth = newValue
                 }
                 
                 GridRow {
@@ -83,12 +73,18 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         Text("height: ")
                     }
                     HStack {
-                        TextField("height", value: $viewModel.height, format: .ranged(1...Int.max, defaultValue: viewModel.height))
+                        TextField("height", value: $newHeight, format: .ranged(1...Int.max, defaultValue: newHeight))
                             .frame(width: 100)
-                        Stepper("", value: $viewModel.height)
+                        Stepper("", value: $newHeight)
                     }
                 }
-                
+                .onChange(of: newHeight) { newValue in
+                    viewModel.height = newValue
+                }
+                .onChange(of: viewModel.height) { newValue in
+                    newHeight = newValue
+                }
+
                 GridRow {
                     Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
 
