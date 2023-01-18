@@ -40,8 +40,8 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
     @ObservedObject var viewModel: ViewModel
     
-    @State private var newWidth: String
-    @State private var newHeight: String
+    @State private var newWidth: Int
+    @State private var newHeight: Int
 
     @State private var newShouldBlur: Bool
     @State private var newBlurRadius: Int
@@ -50,8 +50,8 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
-        self.newWidth = String(viewModel.width)
-        self.newHeight = String(viewModel.height)
+        self.newWidth = viewModel.width
+        self.newHeight = viewModel.height
         self.newShouldBlur = viewModel.blur == nil ? false : true
         self.newBlurRadius = viewModel.blur ?? 0
         
@@ -71,22 +71,11 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         Text("width: ")
                     }
                     HStack {
-                        TextField("width", text: $newWidth)
+                        TextField("width", value: $viewModel.width, format: .ranged(1...Int.max, defaultValue: viewModel.width))
                             .frame(width: 100)
-                            .onChange(of: newWidth) { newValue in
-                                let newValue = Int(newValue) ?? nil
-                                if let newValue = newValue {
-                                    viewModel.width = newValue
-                                }
-                                newWidth = String(viewModel.width)
-                            }
                         Stepper("", value: $viewModel.width)
-                            .onChange(of: viewModel.width) { newValue in
-                                newWidth = String(newValue)
-                            }
                     }
                 }
-                
                 
                 GridRow {
                     HStack {
@@ -94,19 +83,9 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
                         Text("height: ")
                     }
                     HStack {
-                        TextField("height", text: $newHeight)
+                        TextField("height", value: $viewModel.height, format: .ranged(1...Int.max, defaultValue: viewModel.height))
                             .frame(width: 100)
-                            .onChange(of: newHeight) { newValue in
-                                let newValue = Int(newValue) ?? nil
-                                if let newValue = newValue {
-                                    viewModel.height = newValue
-                                }
-                                newHeight = String(viewModel.height)
-                            }
                         Stepper("", value: $viewModel.height)
-                            .onChange(of: viewModel.height) { newValue in
-                                newHeight = String(newValue)
-                            }
                     }
                 }
                 
@@ -197,13 +176,13 @@ struct PictureEditor<ViewModel: PictureEditorViewModel>: View {
     
     private var scaling: CGFloat { 1.1 }
     private func decreaseImageSize() {
-        newWidth = String(Int(Double(newWidth)! * 1/scaling))
-        newHeight = String(Int(Double(newHeight)! * 1/scaling))
+        newWidth = Int(Double(newWidth) * 1/scaling)
+        newHeight = Int(Double(newHeight) * 1/scaling)
     }
 
     private func increaseImageSize() {
-        newWidth = String(min(Int(Double(newWidth)! * scaling), viewModel.sourceWidth))
-        newHeight = String(min(Int(Double(newHeight)! * scaling), viewModel.sourceHeight))
+        newWidth = min(Int(Double(newWidth) * scaling), viewModel.sourceWidth)
+        newHeight = min(Int(Double(newHeight) * scaling), viewModel.sourceHeight)
     }
 }
 

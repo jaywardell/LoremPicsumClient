@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CA79C2329776BF7000122A4 /* RangeIntegerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA79C2229776BF7000122A4 /* RangeIntegerStyle.swift */; };
 		7CAC6AA1294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA0294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift */; };
 		7CAC6AA3294F7A1600D3CADB /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA2294F7A1600D3CADB /* Favorites.swift */; };
 		7CAC6AA5294F9AA400D3CADB /* LoremPicsumFavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7CA79C2229776BF7000122A4 /* RangeIntegerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeIntegerStyle.swift; sourceTree = "<group>"; };
 		7CAC6AA0294EBED700D3CADB /* LoremPicsumPicture+TopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoremPicsumPicture+TopViewModel.swift"; sourceTree = "<group>"; };
 		7CAC6AA2294F7A1600D3CADB /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		7CAC6AA4294F9AA400D3CADB /* LoremPicsumFavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoremPicsumFavoritesList.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				7CEBDF85294E2CFF000038C8 /* PictureList.swift */,
 				7CEBDF8A294E3F48000038C8 /* PictureView.swift */,
 				7CEBDF96294E4BAF000038C8 /* PictureEditor.swift */,
+				7CA79C2229776BF7000122A4 /* RangeIntegerStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA79C2329776BF7000122A4 /* RangeIntegerStyle.swift in Sources */,
 				7CAC6AA5294F9AA400D3CADB /* LoremPicsumFavoritesList.swift in Sources */,
 				7CEBDF65294DE3E3000038C8 /* ProcessInfo+XCodePreviews.swift in Sources */,
 				7CEBDF89294E38E3000038C8 /* LoremPicsumList+PictureListDataSource.swift in Sources */,
